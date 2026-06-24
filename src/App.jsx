@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useEffect } from "react";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Services from "./components/Services";
@@ -7,23 +7,34 @@ import Skills from "./components/Skills";
 import Testimonials from "./components/Testimonials";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
-import "./globals.css";
+import Resume from "./components/Resume";
+import Preloader from "./components/Preloader";
+import BackToTop from "./components/BackToTop";
 import "./App.css";
 
 function App() {
+  useEffect(() => {
+    if (window.WOW) {
+      new window.WOW().init();
+    }
+  }, []);
+
   return (
-    <div className="site-wrapper">
+    <>
+      <Preloader />
+      <BackToTop />
       <Header />
-      <main className="site-content">
+      <main className="site-content" id="content">
         <Hero />
         <Services />
         <Portfolio />
+        <Resume />
         <Skills />
         <Testimonials />
         <Contact />
       </main>
       <Footer />
-    </div>
+    </>
   );
 }
 

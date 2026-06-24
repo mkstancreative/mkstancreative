@@ -1,6 +1,48 @@
-import "./Hero.css";
+import React, { useEffect } from "react";
 
-export default function Hero() {
+const Hero = () => {
+  useEffect(() => {
+    const initOdometer = () => {
+      if (window.$ && window.Odometer) {
+        window.$(".odometer").each(function () {
+          const $el = window.$(this);
+          const countNumber = $el.attr("data-count");
+
+          // Ensure it starts at 0
+          $el.html("0");
+
+          const od = new window.Odometer({
+            el: this,
+            value: 0,
+            format: "",
+            theme: "default",
+          });
+
+          if (window.$.fn.appear) {
+            $el.appear(function () {
+              od.update(countNumber);
+            });
+
+            // If already in view, trigger it after a short delay
+            if ($el.is(":appeared")) {
+              setTimeout(() => {
+                od.update(countNumber);
+              }, 200);
+            }
+          } else {
+            // Fallback if appear is not available
+            setTimeout(() => {
+              od.update(countNumber);
+            }, 500);
+          }
+        });
+      }
+    };
+
+    const timer = setTimeout(initOdometer, 500);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <section className="hero-section d-flex align-items-center" id="intro">
       <div className="intro_text">
@@ -21,44 +63,37 @@ export default function Hero() {
               </h1>
 
               <div className="hero-image-box d-md-none text-center">
-                <img src="/assets/img/hero/me.png" alt="Mk Stanley" />
+                <img src="assets/img/hero/me.png" alt="" />
               </div>
 
               <p className="lead">
-                I break down complex user experience problems to create
-                integrity focused solutions that connect billions of people
+                I break down complex user experinece problems to create
+                integritiy focussed solutions that connect billions of people
               </p>
               <div className="button-box d-flex flex-wrap align-items-center">
-                <a
-                  href="https://bit.ly/cv-mkstancreative"
-                  className="btn tj-btn-secondary"
-                >
+                <a href="#" className="btn tj-btn-secondary">
                   Download CV
                 </a>
                 <ul className="ul-reset social-icons">
                   <li>
-                    <a
-                      href="https://facebook.com/mkstancreative"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <i className="fa-brands fa-facebook"></i>
+                    <a href="#">
+                      <i className="fa-brands fa-twitter"></i>
                     </a>
                   </li>
                   <li>
                     <a
-                      href="https://wa.me/2347068265165"
+                      href="tel:+2347068265165"
                       target="_blank"
-                      rel="noopener noreferrer"
+                      rel="noreferrer"
                     >
-                      <i className="fa-brands fa-whatsapp"></i>
+                      <i className="fa-light fa-whatsapp"></i>
                     </a>
                   </li>
                   <li>
                     <a
                       href="https://www.linkedin.com/mwlite/in/stanley-chidimma"
                       target="_blank"
-                      rel="noopener noreferrer"
+                      rel="noreferrer"
                     >
                       <i className="fa-brands fa-linkedin-in"></i>
                     </a>
@@ -67,7 +102,7 @@ export default function Hero() {
                     <a
                       href="https://github.com/mkstancreative"
                       target="_blank"
-                      rel="noopener noreferrer"
+                      rel="noreferrer"
                     >
                       <i className="fa-brands fa-github"></i>
                     </a>
@@ -78,7 +113,7 @@ export default function Hero() {
           </div>
           <div className="col-md-6 d-none d-md-block">
             <div className="hero-image-box text-center">
-              <img src="/assets/img/hero/me.png" alt="Mk Stanley" />
+              <img src="assets/img/hero/me.png" alt="" />
             </div>
           </div>
         </div>
@@ -144,4 +179,6 @@ export default function Hero() {
       </div>
     </section>
   );
-}
+};
+
+export default Hero;

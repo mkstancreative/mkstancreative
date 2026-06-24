@@ -1,36 +1,40 @@
-import { useState } from "react";
-import "./Header.css";
+import React, { useEffect } from "react";
 
-export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+const Header = () => {
+  useEffect(() => {
+    if (window.$) {
+      // Hamburger Menu
+      window.$(".menu-bar").on("click", function () {
+        window.$(".menu-bar").toggleClass("menu-bar-toggeled");
+        window.$(".header-menu").toggleClass("opened");
+        window.$("body").toggleClass("overflow-hidden");
+      });
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const handleNavClick = () => {
-    setIsMenuOpen(false);
-  };
+      window.$(".header-menu ul li a").on("click", function () {
+        window.$(".menu-bar").removeClass("menu-bar-toggeled");
+        window.$(".header-menu").removeClass("opened");
+        window.$("body").removeClass("overflow-hidden");
+      });
+    }
+  }, []);
 
   return (
     <>
+      {/* HEADER START */}
       <header className="tj-header-area header-absolute">
         <div className="container">
           <div className="row">
             <div className="col-12 d-flex flex-wrap align-items-center">
               <div className="logo-box">
-                <a href="/">
-                  <img
-                    src="/assets/img/logo/logo.png"
-                    alt="MkstanCreative Logo"
-                  />
+                <a href="index.html">
+                  <img src="assets/img/logo/logo.png" alt="" />
                 </a>
               </div>
 
               <div className="header-info-list d-none d-md-inline-block">
                 <ul className="ul-reset">
                   <li>
-                    <a href="/">MkstanCreative</a>
+                    <a href="index.html">MkstanCreative</a>
                   </li>
                 </ul>
               </div>
@@ -39,34 +43,22 @@ export default function Header() {
                 <nav>
                   <ul>
                     <li>
-                      <a href="#services-section" onClick={handleNavClick}>
-                        Services
-                      </a>
+                      <a href="#services-section">Services</a>
                     </li>
                     <li>
-                      <a href="#works-section" onClick={handleNavClick}>
-                        Works
-                      </a>
+                      <a href="#works-section">Works</a>
                     </li>
                     <li>
-                      <a href="#resume-section" onClick={handleNavClick}>
-                        Resume
-                      </a>
+                      <a href="#resume-section">Resume</a>
                     </li>
                     <li>
-                      <a href="#skills-section" onClick={handleNavClick}>
-                        Skills
-                      </a>
+                      <a href="#skills-section">Skills</a>
                     </li>
                     <li>
-                      <a href="#testimonials-section" onClick={handleNavClick}>
-                        Testimonials
-                      </a>
+                      <a href="#testimonials-section">Testimonials</a>
                     </li>
                     <li>
-                      <a href="#contact-section" onClick={handleNavClick}>
-                        Contact
-                      </a>
+                      <a href="#contact-section">Contact</a>
                     </li>
                   </ul>
                 </nav>
@@ -82,7 +74,7 @@ export default function Header() {
               </div>
 
               <div className="menu-bar d-lg-none">
-                <button onClick={toggleMenu}>
+                <button>
                   <span></span>
                   <span></span>
                   <span></span>
@@ -99,18 +91,15 @@ export default function Header() {
           <div className="row">
             <div className="col-12 d-flex flex-wrap align-items-center">
               <div className="logo-box">
-                <a href="/">
-                  <img
-                    src="/assets/img/logo/logo.png"
-                    alt="MkstanCreative Logo"
-                  />
+                <a href="index.html">
+                  <img src="assets/img/logo/logo.png" alt="" />
                 </a>
               </div>
 
               <div className="header-info-list d-none d-md-inline-block">
                 <ul className="ul-reset">
                   <li>
-                    <a href="/">MkstanCreative</a>
+                    <a href="index.html">MkstanCreative</a>
                   </li>
                 </ul>
               </div>
@@ -119,34 +108,22 @@ export default function Header() {
                 <nav>
                   <ul>
                     <li>
-                      <a href="#services-section" onClick={handleNavClick}>
-                        Services
-                      </a>
+                      <a href="#services-section">Services</a>
                     </li>
                     <li>
-                      <a href="#works-section" onClick={handleNavClick}>
-                        Works
-                      </a>
+                      <a href="#works-section">Works</a>
                     </li>
                     <li>
-                      <a href="#resume-section" onClick={handleNavClick}>
-                        Resume
-                      </a>
+                      <a href="#resume-section">Resume</a>
                     </li>
                     <li>
-                      <a href="#skills-section" onClick={handleNavClick}>
-                        Skills
-                      </a>
+                      <a href="#skills-section">Skills</a>
                     </li>
                     <li>
-                      <a href="#testimonials-section" onClick={handleNavClick}>
-                        Testimonials
-                      </a>
+                      <a href="#testimonials-section">Testimonials</a>
                     </li>
                     <li>
-                      <a href="#contact-section" onClick={handleNavClick}>
-                        Contact
-                      </a>
+                      <a href="#contact-section">Contact</a>
                     </li>
                   </ul>
                 </nav>
@@ -162,7 +139,7 @@ export default function Header() {
               </div>
 
               <div className="menu-bar d-lg-none">
-                <button onClick={toggleMenu}>
+                <button>
                   <span></span>
                   <span></span>
                   <span></span>
@@ -173,6 +150,9 @@ export default function Header() {
           </div>
         </div>
       </header>
+      {/* HEADER END */}
     </>
   );
-}
+};
+
+export default Header;

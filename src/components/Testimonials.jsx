@@ -1,54 +1,115 @@
-import "./Testimonials.css";
+import React from "react";
 
-export default function Testimonials() {
-  const testimonials = [
-    {
-      id: 1,
-      content:
-        "Mk Stanley did an amazing job on our website. Highly professional and delivered exactly what we needed.",
-      author: "John Doe",
-      company: "Tech Company",
-    },
-    {
-      id: 2,
-      content:
-        "Exceptional work and great communication throughout the project. I would definitely recommend!",
-      author: "Jane Smith",
-      company: "Creative Agency",
-    },
-    {
-      id: 3,
-      content:
-        "Outstanding UI/UX design. The attention to detail and user experience is remarkable.",
-      author: "Mike Johnson",
-      company: "Digital Solutions",
-    },
-  ];
-
+const Testimonials = () => {
   return (
-    <section className="testimonials-section" id="testimonials-section">
+    <section className="testimonial-section" id="testimonials-section">
       <div className="container">
         <div className="row">
-          <div className="col-md-12">
-            <div className="section-header text-center">
-              <h2 className="section-title">What My Clients Say</h2>
-              <p>Real feedback from satisfied clients</p>
+          <div className="col-lg-5">
+            <div className="section-header">
+              <h2 className="section-title wow fadeInLeft" data-wow-delay=".3s">
+                My Client's Stories
+              </h2>
+              <p className="wow fadeInLeft" data-wow-delay=".4s">
+                Empowering people in new a digital journey with my super
+                services
+              </p>
             </div>
           </div>
-        </div>
 
-        <div className="row">
-          {testimonials.map((testimonial) => (
-            <div key={testimonial.id} className="col-md-6 col-lg-4">
-              <div className="testimonial-item">
-                <p className="testimonial-content">"{testimonial.content}"</p>
-                <h5 className="testimonial-author">{testimonial.author}</h5>
-                <p className="testimonial-company">{testimonial.company}</p>
+          <div className="col-lg-7 col-xl-6 offset-xl-1">
+            <div
+              className="testimonials-widget wow fadeInRight"
+              data-wow-delay=".5s"
+            >
+              <div className="owl-carousel testimonial-carousel">
+                <div className="testimonial-item">
+                  <div className="top-area d-flex flex-wrap justify-content-between">
+                    <div className="logo-box"></div>
+                    <div className="image-box">
+                      <img src="assets/img/testimonials/user/1.jpg" alt="" />
+                    </div>
+                  </div>
+                  <div className="icon-box">
+                    <svg
+                      width="22"
+                      height="22"
+                      viewBox="0 0 22 22"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M0.105431 2.18998C0.0301532 0.988687 1.02531 -0.00647222 2.2266 0.0688056L19.4961 1.15097C21.2148 1.25867 22.0029 3.34358 20.7852 4.56127L4.5979 20.7486C3.3802 21.9663 1.2953 21.1781 1.1876 19.4594L0.105431 2.18998Z"
+                        fill="url(#paint0_linear_263_588)"
+                      />
+                      <defs>
+                        <linearGradient
+                          id="paint0_linear_263_588"
+                          x1="-0.0363755"
+                          y1="-0.0729998"
+                          x2="35.3333"
+                          y2="-0.0729991"
+                          gradientUnits="userSpaceOnUse"
+                        >
+                          <stop
+                            offset="1"
+                            stopColor="var(--tj-theme-primary)"
+                          />
+                          <stop
+                            offset="1"
+                            stopColor="#140C1C"
+                            stopOpacity="0"
+                          />
+                        </linearGradient>
+                      </defs>
+                    </svg>
+                    {/* Repeated SVG or similar... */}
+                  </div>
+                  <p className="quote">
+                    “Meet Stanley, our crypto website wizard! He flawlessly
+                    built our site and delivered it on time. Highly recommend!".
+                  </p>
+                  <h4 className="name">Brandon Fraser</h4>
+                  <span className="designation">GrandBitVerse</span>
+                </div>
+
+                <div className="testimonial-item">
+                  <div className="top-area d-flex flex-wrap justify-content-between">
+                    <div className="logo-box"></div>
+                    <div className="image-box">
+                      <img src="assets/img/testimonials/user/3.jpg" alt="" />
+                    </div>
+                  </div>
+                  <p className="quote">
+                    "Stanley is the crypto website genius you need! He built our
+                    site quickly and it's perfect. Highly recommended!"
+                  </p>
+                  <h4 className="name">Tim Bailey</h4>
+                  <span className="designation">BoomTrade</span>
+                </div>
+
+                <div className="testimonial-item">
+                  <div className="top-area d-flex flex-wrap justify-content-between">
+                    <div className="logo-box"></div>
+                    <div className="image-box">
+                      <img src="assets/img/testimonials/user/4.jpg" alt="" />
+                    </div>
+                  </div>
+                  <p className="quote">
+                    "Absolutely the go-to guy for Bitcoin investment websites!
+                    He really nailed our site, putting his expertise and
+                    creativity to work.
+                  </p>
+                  <h4 className="name">John Willy</h4>
+                  <span className="designation">ExperVistaGroup</span>
+                </div>
               </div>
             </div>
-          ))}
+          </div>
         </div>
       </div>
     </section>
   );
-}
+};
+
+export default Testimonials;
