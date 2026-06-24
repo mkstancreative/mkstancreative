@@ -1,6 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const Services = () => {
+  useEffect(() => {
+    if (window.$) {
+      const active_bg = window.$(".services-widget .active-bg");
+      const element = window.$(".services-widget .current");
+
+      const activeService = (active_bg, e) => {
+        if (!e.length || !active_bg.length) return;
+        const topOff = e.offset().top;
+        const height = e.outerHeight();
+        const menuTop = window.$(".services-widget").offset().top;
+        e.closest(".service-item").removeClass("mleave");
+        e.closest(".service-item").siblings().addClass("mleave");
+        active_bg.css({
+          top: topOff - menuTop + "px",
+          height: height + "px",
+        });
+      };
+
+      activeService(active_bg, element);
+    }
+  }, []);
+
   return (
     <>
       <section className="services-section" id="services-section">
@@ -23,7 +45,7 @@ const Services = () => {
             <div className="col-md-12">
               <div className="services-widget position-relative">
                 <div
-                  className="service-item d-flex flex-wrap align-items-center wow fadeInUp"
+                  className="service-item current d-flex flex-wrap align-items-center wow fadeInUp"
                   data-wow-delay=".7s"
                 >
                   <div className="left-box d-flex flex-wrap align-items-center">
@@ -66,7 +88,7 @@ const Services = () => {
                   ></button>
                 </div>
                 <div
-                  className="service-item current d-flex flex-wrap align-items-center wow fadeInUp"
+                  className="service-item d-flex flex-wrap align-items-center wow fadeInUp"
                   data-wow-delay=".5s"
                 >
                   <div className="left-box d-flex flex-wrap align-items-center">
@@ -92,7 +114,7 @@ const Services = () => {
                   data-wow-delay=".6s"
                 >
                   <div className="left-box d-flex flex-wrap align-items-center">
-                    <span className="number">02</span>
+                    <span className="number">04</span>
                     <h3 className="service-title">Back End Development</h3>
                   </div>
                   <div className="right-box">

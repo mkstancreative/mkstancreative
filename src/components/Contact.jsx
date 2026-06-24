@@ -129,8 +129,8 @@ const Contact = () => {
                     </div>
                     <div className="text-box">
                       <p>Email</p>
-                      <a href="mailto:contact@mkstancreative.com">
-                        contact@mkstancreative.com
+                      <a href="mailto:mkstancreative@gmail.com">
+                        mkstancreative@gmail.com
                       </a>
                     </div>
                   </li>

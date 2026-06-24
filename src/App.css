@@ -1,0 +1,9 @@
+.odometer.odometer-theme-default {
+  font-family: var(--tj-ff-body) !important;
+  line-height: 1 !important;
+}
+
+.funfact-item .number {
+  display: flex;
+  align-items: center;
+}

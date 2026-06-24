@@ -3,43 +3,39 @@ import React, { useEffect } from "react";
 const Hero = () => {
   useEffect(() => {
     const initOdometer = () => {
-      if (window.$ && window.Odometer) {
-        window.$(".odometer").each(function () {
+      if (window.Odometer && window.$ && window.$.fn.appear) {
+        const $funfactArea = window.$(".funfact-area");
+        const $odometers = window.$(".odometer");
+        const odometerInstances = [];
+
+        $odometers.each(function () {
           const $el = window.$(this);
           const countNumber = $el.attr("data-count");
-
-          // Ensure it starts at 0
-          $el.html("0");
 
           const od = new window.Odometer({
             el: this,
             value: 0,
-            format: "",
+            format: countNumber.includes(".") ? "(,ddd).d" : "(,ddd)",
             theme: "default",
           });
-
-          if (window.$.fn.appear) {
-            $el.appear(function () {
-              od.update(countNumber);
-            });
-
-            // If already in view, trigger it after a short delay
-            if ($el.is(":appeared")) {
-              setTimeout(() => {
-                od.update(countNumber);
-              }, 200);
-            }
-          } else {
-            // Fallback if appear is not available
-            setTimeout(() => {
-              od.update(countNumber);
-            }, 500);
-          }
+          odometerInstances.push({ od, val: parseFloat(countNumber) });
         });
+
+        $funfactArea.appear(function () {
+          odometerInstances.forEach(({ od, val }) => {
+            setTimeout(() => {
+              od.update(val);
+            }, 500);
+          });
+        });
+
+        if ($funfactArea.is(":appeared")) {
+          $funfactArea.trigger("appear");
+        }
       }
     };
 
-    const timer = setTimeout(initOdometer, 500);
+    const timer = setTimeout(initOdometer, 1000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -123,7 +119,10 @@ const Hero = () => {
             <div className="col-6 col-lg-3">
               <div className="funfact-item d-flex flex-column flex-sm-row flex-wrap align-items-center">
                 <div className="number">
-                  <span className="odometer" data-count="4">
+                  <span
+                    className="odometer odometer-theme-default"
+                    data-count="4"
+                  >
                     0
                   </span>
                 </div>
@@ -136,7 +135,10 @@ const Hero = () => {
             <div className="col-6 col-lg-3">
               <div className="funfact-item d-flex flex-column flex-sm-row flex-wrap align-items-center">
                 <div className="number">
-                  <span className="odometer" data-count="50">
+                  <span
+                    className="odometer odometer-theme-default"
+                    data-count="50"
+                  >
                     0
                   </span>
                   +
@@ -150,7 +152,10 @@ const Hero = () => {
             <div className="col-6 col-lg-3">
               <div className="funfact-item d-flex flex-column flex-sm-row flex-wrap align-items-center">
                 <div className="number">
-                  <span className="odometer" data-count="1.5">
+                  <span
+                    className="odometer odometer-theme-default"
+                    data-count="1.5"
+                  >
                     0
                   </span>
                   K
@@ -164,7 +169,10 @@ const Hero = () => {
             <div className="col-6 col-lg-3">
               <div className="funfact-item d-flex flex-column flex-sm-row flex-wrap align-items-center">
                 <div className="number">
-                  <span className="odometer" data-count="4">
+                  <span
+                    className="odometer odometer-theme-default"
+                    data-count="4"
+                  >
                     0
                   </span>
                 </div>

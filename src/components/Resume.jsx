@@ -12,24 +12,24 @@ const Resume = () => {
 
             <div className="resume-widget">
               <div className="resume-item wow fadeInLeft" data-wow-delay=".4s">
-                <div className="time">2022 - Present</div>
+                <div className="time">2025 - Present</div>
                 <h3 className="resume-title">Full Stack Developer</h3>
-                <div className="institute">Remote</div>
+                <div className="institute">NetPro Africa</div>
               </div>
               <div className="resume-item wow fadeInLeft" data-wow-delay=".5s">
-                <div className="time">2020 - 2022</div>
+                <div className="time">2023 - 2025</div>
                 <h3 className="resume-title">Front End Developer</h3>
-                <div className="institute">Owerri, Nigeria</div>
+                <div className="institute">Binvabian Technologies</div>
               </div>
               <div className="resume-item wow fadeInLeft" data-wow-delay=".6s">
-                <div className="time">2018 - 2020</div>
+                <div className="time">2021 - 2022</div>
                 <h3 className="resume-title">Front End Developer</h3>
-                <div className="institute">Owerri, Nigeria</div>
+                <div className="institute">APTECH Education</div>
               </div>
               <div className="resume-item wow fadeInLeft" data-wow-delay=".7s">
-                <div className="time">2016 - 2018</div>
+                <div className="time">2020 - 2021</div>
                 <h3 className="resume-title">Digital Marketing Manager</h3>
-                <div className="institute">Warri, Nigeria</div>
+                <div className="institute">CreativeLab Hub</div>
               </div>
             </div>
           </div>
@@ -51,7 +51,7 @@ const Resume = () => {
                 <div className="institute">Imo State University</div>
               </div>
               <div className="resume-item wow fadeInRight" data-wow-delay=".7s">
-                <div className="time">2010 - 2015</div>
+                <div className="time">2007 - 2013</div>
                 <h3 className="resume-title">
                   West Africa Examination Council
                 </h3>
