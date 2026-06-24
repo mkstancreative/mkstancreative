@@ -1,0 +1,169 @@
+/* Hero Section */
+.hero-section {
+  padding: 120px 0 80px;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f5f5 0%, #e9ecef 100%);
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-top: 80px;
+}
+
+.intro_text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.05;
+  z-index: 0;
+}
+
+.intro_text svg {
+  width: 800px;
+  height: 250px;
+}
+
+.intro_text text {
+  font-size: 150px;
+  font-weight: bold;
+  fill: #333;
+}
+
+.hero-content-box {
+  z-index: 1;
+  position: relative;
+}
+
+.hero-sub-title {
+  display: block;
+  font-size: 16px;
+  color: #007bff;
+  font-weight: 600;
+  margin-bottom: 15px;
+  letter-spacing: 0.5px;
+}
+
+.hero-title {
+  font-size: 48px;
+  font-weight: 700;
+  color: #333;
+  line-height: 1.2;
+  margin-bottom: 25px;
+}
+
+.hero-title br {
+  display: block;
+  content: "";
+}
+
+.lead {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 30px;
+  line-height: 1.8;
+  max-width: 500px;
+}
+
+.button-box {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 12px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.social-icons li a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #f0f0f0;
+  color: #333;
+  transition: all 0.3s ease;
+  font-size: 18px;
+}
+
+.social-icons li a:hover {
+  background: #007bff;
+  color: white;
+  transform: translateY(-3px);
+}
+
+.hero-image-box {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-image-box img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.funfact-area {
+  margin-top: 60px;
+  padding-top: 60px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1;
+}
+
+.funfact-item {
+  gap: 15px;
+  display: flex;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.funfact-item .number {
+  font-size: 32px;
+  font-weight: 700;
+  color: #007bff;
+  min-width: 70px;
+}
+
+.funfact-item .text {
+  font-size: 13px;
+  color: #666;
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+@media (max-width: 991px) {
+  .hero-section {
+    padding: 100px 0 60px;
+  }
+
+  .hero-title {
+    font-size: 36px;
+  }
+
+  .intro_text {
+    display: none;
+  }
+
+  .hero-image-box.d-md-none {
+    display: block !important;
+    margin-bottom: 30px;
+  }
+
+  .hero-image-box.d-none {
+    display: none !important;
+  }
+
+  .funfact-item {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+}

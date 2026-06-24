@@ -1,0 +1,146 @@
+/* Services Section */
+.services-section {
+  padding: 100px 0 80px;
+  background: white;
+}
+
+.section-header {
+  margin-bottom: 60px;
+}
+
+.section-title {
+  font-size: 42px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 20px;
+  letter-spacing: -0.5px;
+}
+
+.section-header p {
+  font-size: 15px;
+  color: #888;
+  max-width: 550px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.services-widget {
+  position: relative;
+}
+
+.service-item {
+  padding: 35px 30px;
+  margin-bottom: 25px;
+  background: white;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.service-item:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  border-color: #007bff;
+  transform: translateY(-2px);
+}
+
+.service-item.current {
+  background: #f9f9f9;
+  border-color: #007bff;
+}
+
+.service-item .left-box {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  min-width: 250px;
+  flex-shrink: 0;
+}
+
+.service-item .number {
+  font-size: 32px;
+  font-weight: 700;
+  color: #007bff;
+  min-width: 60px;
+}
+
+.service-item .service-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.service-item .right-box {
+  flex: 1;
+}
+
+.service-item .right-box p {
+  color: #777;
+  margin: 0;
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+.service-item i {
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: #ddd;
+  transition: all 0.3s ease;
+}
+
+.service-item:hover i {
+  color: #007bff;
+  transform: translateY(-50%) translateX(5px);
+}
+
+.service-link {
+  position: absolute;
+  inset: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.active-bg {
+  position: absolute;
+  background: transparent;
+  z-index: -1;
+}
+
+@media (max-width: 991px) {
+  .section-title {
+    font-size: 32px;
+  }
+
+  .service-item {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .service-item .left-box {
+    min-width: auto;
+    width: 100%;
+  }
+
+  .service-item .service-title {
+    white-space: normal;
+  }
+
+  .service-item i {
+    position: relative;
+    top: auto;
+    right: auto;
+    transform: none;
+    margin-top: 15px;
+  }
+}
