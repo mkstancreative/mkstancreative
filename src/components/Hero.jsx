@@ -154,11 +154,11 @@ const Hero = () => {
                 <div className="number">
                   <span
                     className="odometer odometer-theme-default"
-                    data-count="1.5"
+                    data-count="100"
                   >
                     0
                   </span>
-                  K
+                  +
                 </div>
                 <div className="text">
                   Happy <br />
