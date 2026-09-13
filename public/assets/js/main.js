@@ -124,13 +124,14 @@ Description: Gerold - Personal Portfolio HTML5 Template
       // jQuery's animate() runs on rAF and stalls in a throttled tab. Both
       // are no-ops while the page is hidden, so jump straight there instead -
       // there is nobody watching the animation anyway.
-      var canSmooth =
-        "scrollBehavior" in document.documentElement.style && !document.hidden;
-      if (canSmooth) {
-        window.scrollTo({ top: top, behavior: "smooth" });
-      } else {
-        window.scrollTo(0, top);
-      }
+      // The theme sets `html { scroll-behavior: smooth }`, so a plain
+      // scrollTo() is smooth too - and smooth scrolling is suspended while the
+      // page is hidden. Ask for "instant" explicitly in that case, otherwise
+      // the link silently does nothing.
+      window.scrollTo({
+        top: top,
+        behavior: document.hidden ? "instant" : "smooth",
+      });
     });
 
     /*------------------------------------------------------
@@ -147,43 +148,9 @@ Description: Gerold - Personal Portfolio HTML5 Template
     /*------------------------------------------------------
     /  Portfolio Filter
     /------------------------------------------------------*/
-    var $grid = null;
-    if ($.fn.isotope && $(".portfolio-box").length > 0) {
-      $grid = $(".portfolio-box").isotope({
-        // options
-        masonry: {
-          columnWidth: ".portfolio-box .portfolio-sizer",
-          gutter: ".portfolio-box .gutter-sizer",
-        },
-        itemSelector: ".portfolio-box .portfolio-item",
-        percentPosition: true,
-      });
-
-      // Images load after Isotope measures the grid, which leaves items
-      // overlapping. Re-layout once every image inside the grid has settled.
-      $(".portfolio-box img").each(function () {
-        if (this.complete) return;
-        $(this).on("load error", function () {
-          $grid.isotope("layout");
-        });
-      });
-      $(window).on("load", function () {
-        $grid.isotope("layout");
-      });
-    }
-
-    // filter items on button click
-    $(".filter-button-group").on("click", "button", function () {
-      $(".filter-button-group button").removeClass("active");
-      $(this).addClass("active");
-
-      var filterValue = $(this).attr("data-filter");
-      if ($grid) {
-        $grid.isotope({
-          filter: filterValue,
-        });
-      }
-    });
+    // Handled by the Portfolio React component (CSS Grid + state). Isotope
+    // used to run here and had to measure the DOM before React had rendered
+    // it, which is what left the grid overlapping on first paint.
 
     /*------------------------------------------------------
     /  Portfolio Gallery Carousel
@@ -345,11 +312,6 @@ Description: Gerold - Personal Portfolio HTML5 Template
     service_animation();
 
     /*------------------------------------------------------
-    /  Portfolio Filter BG Color
-    /------------------------------------------------------*/
-    filter_animation();
-
-    /*------------------------------------------------------
     /  Contact Form
     /------------------------------------------------------*/
     initContactForm();
@@ -483,46 +445,6 @@ Description: Gerold - Personal Portfolio HTML5 Template
     active_bg.css({
       top: topOff - menuTop + "px",
       height: height + "px",
-    });
-  }
-
-  /*------------------------------------------------------
-  /  Portfolio filter background
-  /------------------------------------------------------*/
-  function filter_animation() {
-    var active_bg = $(".portfolio-filter .button-group .active-bg");
-    if (!active_bg.length) return;
-
-    var element = $(".portfolio-filter .button-group .active");
-    $(".portfolio-filter .button-group button").on("click", function () {
-      var e = $(this);
-      activeFilterBtn(active_bg, e);
-    });
-    activeFilterBtn(active_bg, element);
-
-    // Keep the highlight aligned when the layout reflows.
-    $(window).on("resize", function () {
-      activeFilterBtn(
-        active_bg,
-        $(".portfolio-filter .button-group button.active")
-      );
-    });
-  }
-
-  function activeFilterBtn(active_bg, e) {
-    if (!e || !e.length) {
-      return false;
-    }
-    var group = $(".portfolio-filter .button-group");
-    if (!group.length) {
-      return false;
-    }
-    var leftOff = e.offset().left;
-    var width = e.outerWidth();
-    var menuLeft = group.offset().left;
-    active_bg.css({
-      left: leftOff - menuLeft + "px",
-      width: width + "px",
     });
   }
 

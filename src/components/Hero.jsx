@@ -62,7 +62,7 @@ const Hero = () => {
       <div className="intro_text">
         <svg viewBox="0 0 1320 300">
           <text x="50%" y="50%" textAnchor="middle">
-            HI
+            MK
           </text>
         </svg>
       </div>
@@ -77,12 +77,12 @@ const Hero = () => {
               </h1>
 
               <div className="hero-image-box d-md-none text-center">
-                <img src="/assets/img/hero/me.png" alt="" />
+                <img src="/assets/img/mk.png" alt="Mk Stanley" />
               </div>
 
               <p className="lead">
                 I break down complex problems into clean, dependable software
-                &mdash; full-stack web products and practical AI that
+                &mdash; end-to-end web products and practical AI that
                 businesses and their users can trust.
               </p>
               <div className="button-box d-flex flex-wrap align-items-center">
@@ -128,7 +128,7 @@ const Hero = () => {
           </div>
           <div className="col-md-6 d-none d-md-block">
             <div className="hero-image-box text-center">
-              <img src="/assets/img/mk.png" alt="" />
+              <img src="/assets/img/mk.png" alt="Mk Stanley" />
             </div>
           </div>
         </div>

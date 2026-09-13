@@ -34,3 +34,7 @@ dist-ssr
 
 # OS files
 Thumbs.db
+
+# Full-resolution source screenshots. Kept out of public/ so they are never
+# deployed, and out of git so the unredacted originals stay local.
+design-assets/

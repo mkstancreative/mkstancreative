@@ -1,0 +1,353 @@
+/* ==========================================================================
+   My Recent Works
+   Replaces the old Isotope/jQuery masonry grid with CSS Grid + React state.
+   No layout library means no measuring race, no zero-width init, and filter
+   transitions the browser can animate on the compositor.
+   ========================================================================== */
+
+.works {
+  --works-accent: var(--tj-theme-primary, #8750f7);
+  --works-radius: 20px;
+  --works-border: rgba(255, 255, 255, 0.09);
+  --works-border-hover: rgba(135, 80, 247, 0.55);
+  --works-surface: rgba(255, 255, 255, 0.035);
+  --works-muted: rgba(221, 221, 221, 0.62);
+}
+
+/* ---------- Filter ---------- */
+
+.works-filter {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 48px;
+}
+
+.works-filter__group {
+  position: relative;
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px;
+  padding: 6px;
+  border: 1px solid var(--works-border);
+  border-radius: 999px;
+  background: var(--works-surface);
+  backdrop-filter: blur(6px);
+}
+
+.works-filter__btn {
+  position: relative;
+  z-index: 1;
+  padding: 11px 26px;
+  transition: background-color 0.28s ease, color 0.28s ease;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--tj-body, #ddd);
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 0.25s ease;
+}
+
+.works-filter__btn:hover {
+  color: #fff;
+}
+
+/* The active tab is painted directly rather than tracked by a JS-positioned
+   pill. The pill needed live measurements of every button, which fell apart
+   as soon as the tabs wrapped, scrolled, or the webfont changed their widths. */
+.works-filter__btn[aria-pressed="true"] {
+  background: var(--works-accent);
+  color: #fff;
+}
+
+.works-filter__btn:focus-visible {
+  outline: 2px solid var(--works-accent);
+  outline-offset: 3px;
+}
+
+.works-filter__count {
+  margin-left: 7px;
+  font-size: 12px;
+  opacity: 0.65;
+}
+
+/* ---------- Grid ---------- */
+
+.works-grid {
+  display: grid;
+  /* Two up from tablet width, which fills one clean row for the current set
+     of projects. Add a third column here if the set grows past four. */
+  grid-template-columns: 1fr;
+  gap: 30px;
+}
+
+@media (min-width: 768px) {
+  .works-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.works-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--works-border);
+  border-radius: var(--works-radius);
+  background: var(--works-surface);
+  /* Reveal state - lifted by .works-grid.is-visible below. */
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.works-grid.is-visible .works-card {
+  opacity: 1;
+  transform: none;
+}
+
+.works-card:hover,
+.works-card:focus-within {
+  border-color: var(--works-border-hover);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.45);
+}
+
+/* Re-run the entry animation whenever the filter changes. */
+.works-card.is-entering {
+  animation: works-enter 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes works-enter {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.works-card[hidden] {
+  display: none;
+}
+
+/* ---------- Card media ---------- */
+
+.works-card__media {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.works-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.works-card:hover .works-card__media img,
+.works-card:focus-within .works-card__media img {
+  transform: scale(1.06);
+}
+
+/* Keeps the chip legible over any screenshot. */
+.works-card__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 4, 24, 0.55) 0%,
+    rgba(10, 4, 24, 0) 42%
+  );
+  pointer-events: none;
+}
+
+.works-card__tag {
+  position: absolute;
+  z-index: 1;
+  top: 16px;
+  left: 16px;
+  padding: 6px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  background: rgba(10, 4, 24, 0.6);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+/* ---------- Card body ---------- */
+
+.works-card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 10px;
+  padding: 26px 28px 28px;
+}
+
+.works-card__title {
+  margin: 0;
+  color: #fff;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.works-card__desc {
+  margin: 0;
+  color: var(--works-muted);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.works-card__foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: auto;
+  padding-top: 20px;
+}
+
+.works-card__meta {
+  color: var(--works-muted);
+  font-size: 14px;
+}
+
+.works-card__arrow {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 46px;
+  height: 46px;
+  border: 1px solid var(--works-border);
+  border-radius: 50%;
+  color: #fff;
+  font-size: 15px;
+  transition: background-color 0.3s ease, border-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.works-card:hover .works-card__arrow,
+.works-card:focus-within .works-card__arrow {
+  border-color: var(--works-accent);
+  background: var(--works-accent);
+  transform: translate(3px, -3px);
+}
+
+/* The whole card is one big hit target; the button stays a real button so
+   keyboard users and Magnific Popup both keep working. */
+.works-card__link {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+  color: transparent;
+}
+
+.works-card__link:focus-visible {
+  outline: 2px solid var(--works-accent);
+  outline-offset: -3px;
+  border-radius: var(--works-radius);
+}
+
+/* ---------- Empty state ---------- */
+
+.works-empty {
+  grid-column: 1 / -1;
+  padding: 56px 20px;
+  border: 1px dashed var(--works-border);
+  border-radius: var(--works-radius);
+  color: var(--works-muted);
+  text-align: center;
+}
+
+/* ---------- Responsive ---------- */
+
+/* Four tabs with counts need ~420px, so below that they wrapped onto a second
+   row. Tighten them progressively; the pill follows either way. */
+@media (max-width: 767px) {
+  .works-filter {
+    margin-bottom: 36px;
+  }
+
+  .works-filter__btn {
+    padding-left: 18px;
+    padding-right: 18px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 479px) {
+  /* Four tabs cannot fit one row on a phone. A scrolling strip clipped them,
+     so lay them out as a 2x2 block instead: nothing is hidden, and with the
+     sliding pill gone there is no reason they have to share a row. */
+  .works-filter__group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    width: 100%;
+    border-radius: 18px;
+  }
+
+  .works-filter__btn {
+    width: 100%;
+    padding-left: 12px;
+    padding-right: 12px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 575px) {
+  .works-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .works-card__body {
+    padding: 22px 20px 24px;
+  }
+
+  .works-card__title {
+    font-size: 21px;
+  }
+}
+
+/* ---------- Motion preferences ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .works-card,
+  .works-card__media img,
+  .works-card__arrow,
+  .works-filter__btn {
+    transition: none !important;
+  }
+
+  .works-card.is-entering {
+    animation: none;
+  }
+
+  .works-card {
+    opacity: 1;
+    transform: none;
+  }
+}

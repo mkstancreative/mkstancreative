@@ -11,6 +11,7 @@ import Resume from "./components/Resume";
 import Preloader from "./components/Preloader";
 import BackToTop from "./components/BackToTop";
 import "./App.css";
+import "./responsive.css";
 
 function App() {
   useEffect(() => {

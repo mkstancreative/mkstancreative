@@ -10,7 +10,7 @@ const Header = () => {
             <div className="col-12 d-flex flex-wrap align-items-center">
               <div className="logo-box">
                 <a href="/">
-                  <img src="/assets/img/logo/logo.png" alt="" />
+                  <img src="/assets/img/logo/mk-logo.svg" alt="MkstanCreative" />
                 </a>
               </div>
 
@@ -52,7 +52,7 @@ const Header = () => {
                   href="mailto:mkstancreative@gmail.com"
                   className="btn tj-btn-primary"
                 >
-                  Hire me!
+                  Contact
                 </a>
               </div>
 
@@ -75,7 +75,7 @@ const Header = () => {
             <div className="col-12 d-flex flex-wrap align-items-center">
               <div className="logo-box">
                 <a href="/">
-                  <img src="/assets/img/logo/logo.png" alt="" />
+                  <img src="/assets/img/logo/mk-logo.svg" alt="MkstanCreative" />
                 </a>
               </div>
 
@@ -117,7 +117,7 @@ const Header = () => {
                   href="mailto:mkstancreative@gmail.com"
                   className="btn tj-btn-primary"
                 >
-                  Hire me!
+                  Contact
                 </a>
               </div>
 

@@ -1,0 +1,146 @@
+/* ==========================================================================
+   Site-wide responsive + spacing corrections.
+
+   Loaded after the theme's main.css / responsive.css, so plain selectors here
+   win without needing !important. Kept in src/ rather than edited into the
+   vendor stylesheets so a theme update does not silently drop these.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Project detail popups had no bottom padding
+   --------------------------------------------------------------------------
+   `.popup_modal_content` sets only `padding-top`, and `.portfolio_info` sets
+   `padding: 0 40px`. The Live Preview button and the last meta row therefore
+   sat flush against the bottom edge of the white panel. The service popups
+   were fine because `.service_details` carries its own bottom padding, so the
+   fix targets the portfolio layout only to avoid doubling it up there.        */
+
+.popup_modal_content .portfolio_info {
+  padding-bottom: 60px;
+}
+
+/* Give the panel a little breathing room from the viewport edges on phones,
+   and a touch more inner padding than the theme's 15px. */
+@media only screen and (max-width: 767px) {
+  .popup_modal_content .portfolio_info {
+    padding-left: 22px;
+    padding-right: 22px;
+    padding-bottom: 40px;
+  }
+
+  .popup_modal_img {
+    padding: 22px 22px 0;
+  }
+
+  .popup_modal_content {
+    padding-top: 34px;
+  }
+
+  .service_details {
+    padding: 0 22px 40px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   2. Contact form overflowed its card
+   --------------------------------------------------------------------------
+   Bootstrap's `.row.gx-3` applies `margin: 0 -8px` negative gutters, which are
+   meant to be absorbed by padding on the containing element. `.tj-contact-form`
+   has none, so the row measured 337px inside a 321px box and the fields bled
+   past the card's padding (scrollWidth 329 vs clientWidth 321). Zeroing the
+   row margin lets the columns' own padding provide the gutter instead.        */
+
+.tj-contact-form .row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* --------------------------------------------------------------------------
+   3. Touch targets
+   --------------------------------------------------------------------------
+   Several controls were well under the ~44px comfortable minimum on phones:
+   social icons at 35x35, carousel dots at 14x14, filter buttons at 34px tall. */
+
+@media only screen and (max-width: 991px) {
+  .works-filter__btn {
+    padding-top: 13px;
+    padding-bottom: 13px;
+  }
+
+  .hero-content-box .social-icons a {
+    width: 42px;
+    height: 42px;
+  }
+
+  /* Grow the dot's hit area without changing how big it looks. */
+  .owl-dots .owl-dot {
+    position: relative;
+  }
+
+  .owl-dots .owl-dot::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    transform: translate(-50%, -50%);
+  }
+
+  .footer-menu nav ul li a,
+  .header-menu nav ul li a {
+    display: inline-block;
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
+
+  /* The hamburger is the most important control on a phone and was only
+     40x25. Its height and its spans are positioned by the theme, so grow the
+     hit area with a pseudo-element instead of resizing the button. */
+  .tj-header-area .menu-bar button::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 48px;
+    height: 48px;
+    transform: translate(-50%, -50%);
+  }
+
+  /* Phone number and email in the contact list were 26px tall. */
+  .text-box > a {
+    display: inline-block;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   4. Small type
+   --------------------------------------------------------------------------
+   The two 12px labels in the Works section were the smallest text on the page.  */
+
+.works-filter__count {
+  font-size: 13px;
+}
+
+.works-card__tag {
+  font-size: 12.5px;
+}
+
+/* --------------------------------------------------------------------------
+   5. Belt and braces: nothing should ever scroll the page sideways
+   -------------------------------------------------------------------------- */
+
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+img,
+svg,
+video {
+  max-width: 100%;
+  height: auto;
+}
