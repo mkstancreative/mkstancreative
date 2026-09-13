@@ -27,7 +27,7 @@ const Testimonials = () => {
                   <div className="top-area d-flex flex-wrap justify-content-between">
                     <div className="logo-box"></div>
                     <div className="image-box">
-                      <img src="assets/img/testimonials/user/1.jpg" alt="" />
+                      <img src="/assets/img/testimonials/user/1.jpg" alt="" />
                     </div>
                   </div>
                   <div className="icon-box">
@@ -77,7 +77,7 @@ const Testimonials = () => {
                   <div className="top-area d-flex flex-wrap justify-content-between">
                     <div className="logo-box"></div>
                     <div className="image-box">
-                      <img src="assets/img/testimonials/user/3.jpg" alt="" />
+                      <img src="/assets/img/testimonials/user/3.jpg" alt="" />
                     </div>
                   </div>
                   <p className="quote">
@@ -92,7 +92,7 @@ const Testimonials = () => {
                   <div className="top-area d-flex flex-wrap justify-content-between">
                     <div className="logo-box"></div>
                     <div className="image-box">
-                      <img src="assets/img/testimonials/user/4.jpg" alt="" />
+                      <img src="/assets/img/testimonials/user/4.jpg" alt="" />
                     </div>
                   </div>
                   <p className="quote">

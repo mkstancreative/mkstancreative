@@ -50,13 +50,13 @@ const Services = () => {
                 >
                   <div className="left-box d-flex flex-wrap align-items-center">
                     <span className="number">01</span>
-                    <h3 className="service-title">UI/UX Design</h3>
+                    <h3 className="service-title">AI Mastery</h3>
                   </div>
                   <div className="right-box">
                     <p>
-                      We create visually appealing and user-friendly interfaces
-                      that enhance the overall user experience of websites and
-                      applications, By prioritizing user needs and preferences.
+                      We build and integrate practical AI into your products,
+                      from LLM-powered assistants and automation to smart
+                      workflows that save your team real time every day.
                     </p>
                   </div>
                   <i className="flaticon-up-right-arrow"></i>
@@ -148,7 +148,7 @@ const Services = () => {
         className="popup_content_area zoom-anim-dialog mfp-hide"
       >
         <div className="popup_modal_img">
-          <img src="./assets/img/services/modal-img.jpg" alt="" />
+          <img src="/assets/img/services/modal-img.jpg" alt="" />
         </div>
         <div className="popup_modal_content">
           <div className="service_details">
@@ -157,35 +157,38 @@ const Services = () => {
                 <div className="service_details_content">
                   <div className="service_info">
                     <h6 className="subtitle">SERVICES</h6>
-                    <h2 className="title">UI/UX Designing</h2>
+                    <h2 className="title">AI Mastery</h2>
                     <div className="desc">
                       <p>
-                        Our design involves creating intuitive and visually
-                        appealing interfaces your websites and applications...
+                        We help you put artificial intelligence to work, turning
+                        large language models into features your users actually
+                        rely on rather than demos that never ship.
                       </p>
                       <p>
-                        Hence the UI design focuses on the look and feel of the
-                        interface...
+                        That covers custom chat assistants, search and retrieval
+                        over your own documents, and automating the repetitive
+                        work that quietly eats your team&rsquo;s week.
                       </p>
                       <p>
-                        Together, the UI/UX design aims to create seamless,
-                        engaging, and memorable experiences for users...
+                        Every build comes with real evaluation, sensible
+                        guardrails and cost control, so the AI stays useful,
+                        measurable and safe to put in front of customers.
                       </p>
                     </div>
                     <h3 className="title">Services Process</h3>
                     <div className="desc">
                       <p>
-                        Delivering UI/UX services involves several key steps...
+                        Delivering an AI solution involves several key steps.
                       </p>
                     </div>
                     <ul>
-                      <li>Discovery Phase</li>
-                      <li>Planning and Strategy</li>
-                      <li>Wireframing and Prototyping</li>
-                      <li>Visual Design</li>
-                      <li>Usability Testing</li>
-                      <li>Implementation and Handoff</li>
-                      <li>Launch and Evaluation</li>
+                      <li>Use Case Discovery</li>
+                      <li>Data Review and Preparation</li>
+                      <li>Model and Tooling Selection</li>
+                      <li>Prompt and Workflow Design</li>
+                      <li>Integration and Automation</li>
+                      <li>Evaluation and Testing</li>
+                      <li>Deployment and Monitoring</li>
                       <li>Iterative Improvement</li>
                     </ul>
                   </div>
@@ -200,28 +203,29 @@ const Services = () => {
                     <ul>
                       <li className="active">
                         <button>
-                          <i className="flaticon-design"></i> ADOBE XD
+                          <i className="flaticon-design"></i> OpenAI API
                         </button>
                       </li>
                       <li>
                         <button>
-                          <i className="flaticon-3d-movie"></i> FIGMA
+                          <i className="flaticon-3d-movie"></i> Claude API
                         </button>
                       </li>
                       <li>
                         <button>
-                          <i className="flaticon-ux-design"></i> Framer
+                          <i className="flaticon-ux-design"></i> LangChain
                         </button>
                       </li>
                       <li>
                         <button>
-                          <i className="flaticon-web-design"></i> InVision
+                          <i className="flaticon-web-design"></i> Vector
+                          Databases
                         </button>
                       </li>
                       <li>
                         <button>
-                          <i className="flaticon-ui-design"></i> User Testing
-                          Tools
+                          <i className="flaticon-ui-design"></i> Prompt
+                          Engineering
                         </button>
                       </li>
                     </ul>
@@ -262,7 +266,7 @@ const Services = () => {
         className="popup_content_area zoom-anim-dialog mfp-hide"
       >
         <div className="popup_modal_img">
-          <img src="./assets/img/services/modal-img.jpg" alt="" />
+          <img src="/assets/img/services/modal-img.jpg" alt="" />
         </div>
         <div className="popup_modal_content">
           <div className="service_details">
@@ -274,23 +278,26 @@ const Services = () => {
                     <h2 className="title">Digital Marketing</h2>
                     <div className="desc">
                       <p>
-                        Experience the epitome of digital marketing excellence
-                        with our comprehensive suite of services...
+                        We help your business get found and get chosen online,
+                        combining search visibility, paid campaigns and content
+                        that speaks directly to the people you want to reach.
                       </p>
                       <p>
-                        Harness the power of data-driven insights and innovative
-                        techniques to connect with your audience...
+                        Every decision is driven by data. We track what visitors
+                        actually do on your site, learn which channels bring
+                        real customers, and put your budget where it earns.
                       </p>
                       <p>
-                        Our team of experts crafts meticulously tailored
-                        solutions that transcend conventional boundaries...
+                        The result is steady, measurable growth: more qualified
+                        traffic, better conversion rates, and marketing spend
+                        you can justify with numbers.
                       </p>
                     </div>
                     <h3 className="title">Services Process</h3>
                     <div className="desc">
                       <p>
-                        The digital marketing process typically involves several
-                        key steps...
+                        Growing a brand online follows a clear, repeatable path
+                        from research through to optimisation.
                       </p>
                     </div>
                     <ul>
@@ -315,7 +322,7 @@ const Services = () => {
                     <ul>
                       <li className="active">
                         <button>
-                          <i className="flaticon-design"></i> WordPress
+                          <i className="flaticon-design"></i> Google Analytics
                         </button>
                       </li>
                       <li>
@@ -325,7 +332,7 @@ const Services = () => {
                       </li>
                       <li>
                         <button>
-                          <i className="flaticon-ux-design"></i> Facebook Ads
+                          <i className="flaticon-ux-design"></i> Meta Ads
                         </button>
                       </li>
                       <li>
@@ -335,8 +342,8 @@ const Services = () => {
                       </li>
                       <li>
                         <button>
-                          <i className="flaticon-ui-design"></i> Google Work
-                          Space
+                          <i className="flaticon-ui-design"></i> SEO &amp;
+                          Search Console
                         </button>
                       </li>
                     </ul>
@@ -377,7 +384,7 @@ const Services = () => {
         className="popup_content_area zoom-anim-dialog mfp-hide"
       >
         <div className="popup_modal_img">
-          <img src="./assets/img/services/modal-img.jpg" alt="" />
+          <img src="/assets/img/services/modal-img.jpg" alt="" />
         </div>
         <div className="popup_modal_content">
           <div className="service_details">
@@ -386,35 +393,40 @@ const Services = () => {
                 <div className="service_details_content">
                   <div className="service_info">
                     <h6 className="subtitle">SERVICES</h6>
-                    <h2 className="title">FRONT END</h2>
+                    <h2 className="title">Front End Development</h2>
                     <div className="desc">
                       <p>
-                        Your front-end development serves as the digital face of
-                        your business...
+                        The front end is the part of your product people
+                        actually touch. We build interfaces that are quick to
+                        understand, pleasant to use, and faithful to your brand
+                        on every screen size.
                       </p>
                       <p>
-                        A responsive and visually appealing front-end not only
-                        captivates your audience...
+                        Everything is built component by component in React, so
+                        your interface stays consistent as it grows and new
+                        features slot in without breaking what already works.
                       </p>
                       <p>
-                        By prioritizing consistency, performance, and
-                        inclusivity in your front-end strategy...
+                        We treat speed and accessibility as requirements, not
+                        extras: fast first loads, keyboard and screen-reader
+                        support, and behaviour you can rely on across browsers.
                       </p>
                     </div>
                     <h3 className="title">Services Process</h3>
                     <div className="desc">
                       <p>
-                        Delivering front-end development services involves
-                        several key steps...
+                        Delivering a front end involves several key steps.
                       </p>
                     </div>
                     <ul>
-                      <li>Initial Consultation and Requirement Gathering</li>
+                      <li>Requirement Gathering</li>
                       <li>Wireframing and Prototyping</li>
-                      <li>Design Implementation</li>
-                      <li>Front-end Development</li>
-                      <li>Accessibility and Cross-Browser Compatibility</li>
+                      <li>Component and Design System Setup</li>
+                      <li>Responsive Interface Build</li>
+                      <li>API Integration</li>
+                      <li>Accessibility and Cross-Browser Testing</li>
                       <li>Performance Optimization</li>
+                      <li>Launch and Handoff</li>
                     </ul>
                   </div>
                 </div>
@@ -428,22 +440,23 @@ const Services = () => {
                     <ul>
                       <li className="active">
                         <button>
-                          <i className="flaticon-design"></i> HTML
+                          <i className="flaticon-design"></i> HTML &amp; CSS
                         </button>
                       </li>
                       <li>
                         <button>
-                          <i className="flaticon-3d-movie"></i> CSS
+                          <i className="flaticon-3d-movie"></i> JavaScript
                         </button>
                       </li>
                       <li>
                         <button>
-                          <i className="flaticon-ux-design"></i> JavaScript
+                          <i className="flaticon-ux-design"></i> React JS
                         </button>
                       </li>
                       <li>
                         <button>
-                          <i className="flaticon-web-design"></i> REACT JS
+                          <i className="flaticon-web-design"></i> Bootstrap
+                          &amp; Tailwind
                         </button>
                       </li>
                       <li>
@@ -490,7 +503,7 @@ const Services = () => {
         className="popup_content_area zoom-anim-dialog mfp-hide"
       >
         <div className="popup_modal_img">
-          <img src="./assets/img/services/modal-img.jpg" alt="" />
+          <img src="/assets/img/services/modal-img.jpg" alt="" />
         </div>
         <div className="popup_modal_content">
           <div className="service_details">
@@ -499,35 +512,40 @@ const Services = () => {
                 <div className="service_details_content">
                   <div className="service_info">
                     <h6 className="subtitle">SERVICES</h6>
-                    <h2 className="title">BACK END</h2>
+                    <h2 className="title">Back End Development</h2>
                     <div className="desc">
                       <p>
-                        Discover the backbone of your digital presence with our
-                        meticulously crafted backend services...
+                        The back end is everything your users never see but
+                        depend on: the databases, APIs and business logic that
+                        keep your product running correctly under real load.
                       </p>
                       <p>
-                        Our team of seasoned professionals leverages
-                        cutting-edge technologies...
+                        We design clean data models and well-documented REST
+                        APIs in Node.js and PHP, so your front end, your mobile
+                        app and any third party can all talk to one source of
+                        truth.
                       </p>
                       <p>
-                        With our comprehensive backend services, you can trust
-                        in the reliability...
+                        Security is built in from the start, with proper
+                        authentication, validated input, and safe handling of
+                        the data your customers trust you with.
                       </p>
                     </div>
                     <h3 className="title">Services Process</h3>
                     <div className="desc">
                       <p>
-                        Delivering front-end development services involves
-                        several key steps...
+                        Delivering a back end involves several key steps.
                       </p>
                     </div>
                     <ul>
-                      <li>Initial Consultation and Requirement Gathering</li>
-                      <li>Wireframing and Prototyping</li>
-                      <li>Design Implementation</li>
-                      <li>Front-end Development</li>
-                      <li>Accessibility and Cross-Browser Compatibility</li>
-                      <li>Performance Optimization</li>
+                      <li>Requirement Gathering</li>
+                      <li>Database and Data Modelling</li>
+                      <li>API Design and Documentation</li>
+                      <li>Business Logic Implementation</li>
+                      <li>Authentication and Security Hardening</li>
+                      <li>Testing and Load Handling</li>
+                      <li>Deployment and Monitoring</li>
+                      <li>Maintenance and Scaling</li>
                     </ul>
                   </div>
                 </div>
@@ -541,28 +559,31 @@ const Services = () => {
                     <ul>
                       <li className="active">
                         <button>
-                          <i className="flaticon-design"></i> Node.js & Express
+                          <i className="flaticon-design"></i> Node.js &amp;
+                          Express
                         </button>
                       </li>
                       <li>
                         <button>
-                          <i className="flaticon-3d-movie"></i> PHP
+                          <i className="flaticon-3d-movie"></i> PHP &amp;
+                          Laravel
                         </button>
                       </li>
                       <li>
                         <button>
-                          <i className="flaticon-ux-design"></i> JavaScript
+                          <i className="flaticon-ux-design"></i> REST APIs
                         </button>
                       </li>
                       <li>
                         <button>
-                          <i className="flaticon-web-design"></i> REACT JS
+                          <i className="flaticon-web-design"></i> MySQL &amp;
+                          MongoDB
                         </button>
                       </li>
                       <li>
                         <button>
-                          <i className="flaticon-ui-design"></i> Responsive
-                          Design
+                          <i className="flaticon-ui-design"></i> Auth &amp;
+                          Security
                         </button>
                       </li>
                     </ul>

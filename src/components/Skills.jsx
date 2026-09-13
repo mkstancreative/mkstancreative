@@ -24,7 +24,7 @@ const Skills = () => {
               <div className="skill-item wow fadeInUp" data-wow-delay=".3s">
                 <div className="skill-inner">
                   <div className="icon-box">
-                    <img src="assets/img/icons/html-5.png" alt="" />
+                    <img src="/assets/img/icons/html-5.png" alt="" />
                   </div>
                 </div>
                 <p>HTML</p>
@@ -32,7 +32,7 @@ const Skills = () => {
               <div className="skill-item wow fadeInUp" data-wow-delay=".4s">
                 <div className="skill-inner">
                   <div className="icon-box">
-                    <img src="assets/img/icons/css-3.png" alt="" />
+                    <img src="/assets/img/icons/css-3.png" alt="" />
                   </div>
                 </div>
                 <p>CSS</p>
@@ -40,7 +40,7 @@ const Skills = () => {
               <div className="skill-item wow fadeInUp" data-wow-delay=".5s">
                 <div className="skill-inner">
                   <div className="icon-box">
-                    <img src="assets/img/icons/js.svg" alt="" />
+                    <img src="/assets/img/icons/js.svg" alt="" />
                   </div>
                 </div>
                 <p>JavaScript</p>
@@ -48,7 +48,7 @@ const Skills = () => {
               <div className="skill-item wow fadeInUp" data-wow-delay=".6s">
                 <div className="skill-inner">
                   <div className="icon-box">
-                    <img src="assets/img/icons/react.svg" alt="" />
+                    <img src="/assets/img/icons/react.svg" alt="" />
                   </div>
                 </div>
                 <p>React JS</p>
@@ -56,7 +56,7 @@ const Skills = () => {
               <div className="skill-item wow fadeInUp" data-wow-delay=".7s">
                 <div className="skill-inner">
                   <div className="icon-box">
-                    <img src="assets/img/icons/php.png" alt="" />
+                    <img src="/assets/img/icons/php.png" alt="" />
                   </div>
                 </div>
                 <p>PHP</p>
@@ -64,7 +64,7 @@ const Skills = () => {
               <div className="skill-item wow fadeInUp" data-wow-delay=".8s">
                 <div className="skill-inner">
                   <div className="icon-box">
-                    <img src="assets/img/icons/node-js.png" alt="" />
+                    <img src="/assets/img/icons/node-js.png" alt="" />
                   </div>
                 </div>
                 <p>Node JS</p>

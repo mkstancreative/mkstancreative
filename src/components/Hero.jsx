@@ -2,41 +2,59 @@ import React, { useEffect } from "react";
 
 const Hero = () => {
   useEffect(() => {
-    const initOdometer = () => {
-      if (window.Odometer && window.$ && window.$.fn.appear) {
-        const $funfactArea = window.$(".funfact-area");
-        const $odometers = window.$(".odometer");
-        const odometerInstances = [];
+    // The counters used to be driven by jquery.appear and gated on
+    // `$el.is(":appeared")`. That pseudo-selector is never registered by the
+    // bundled build of the plugin, so jQuery 3.7 threw
+    // "unrecognized expression: unsupported pseudo: appeared" and the fallback
+    // never ran. IntersectionObserver does the same job with no plugin and no
+    // arbitrary startup delay.
+    const funfactArea = document.querySelector(".funfact-area");
+    if (!funfactArea || !window.Odometer) return;
 
-        $odometers.each(function () {
-          const $el = window.$(this);
-          const countNumber = $el.attr("data-count");
+    const instances = [];
+    document.querySelectorAll(".odometer").forEach((el) => {
+      const countNumber = el.getAttribute("data-count");
+      const val = parseFloat(countNumber);
+      if (!countNumber || Number.isNaN(val)) return;
 
-          const od = new window.Odometer({
-            el: this,
-            value: 0,
-            format: countNumber.includes(".") ? "(,ddd).d" : "(,ddd)",
-            theme: "default",
-          });
-          odometerInstances.push({ od, val: parseFloat(countNumber) });
-        });
+      const od = new window.Odometer({
+        el,
+        value: 0,
+        format: countNumber.includes(".") ? "(,ddd).d" : "(,ddd)",
+        theme: "default",
+      });
+      instances.push({ od, val });
+    });
 
-        $funfactArea.appear(function () {
-          odometerInstances.forEach(({ od, val }) => {
-            setTimeout(() => {
-              od.update(val);
-            }, 500);
-          });
-        });
+    if (!instances.length) return;
 
-        if ($funfactArea.is(":appeared")) {
-          $funfactArea.trigger("appear");
-        }
-      }
+    const timers = [];
+    const run = () => {
+      instances.forEach(({ od, val }) => {
+        timers.push(setTimeout(() => od.update(val), 500));
+      });
     };
 
-    const timer = setTimeout(initOdometer, 1000);
-    return () => clearTimeout(timer);
+    if (typeof IntersectionObserver === "undefined") {
+      run();
+      return () => timers.forEach(clearTimeout);
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          run();
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+    observer.observe(funfactArea);
+
+    return () => {
+      observer.disconnect();
+      timers.forEach(clearTimeout);
+    };
   }, []);
 
   return (
@@ -54,21 +72,22 @@ const Hero = () => {
             <div className="hero-content-box">
               <span className="hero-sub-title">I am Mk Stanley</span>
               <h1 className="hero-title">
-                Full Stack <br />
+                Software <br />
                 Developer
               </h1>
 
               <div className="hero-image-box d-md-none text-center">
-                <img src="assets/img/hero/me.png" alt="" />
+                <img src="/assets/img/hero/me.png" alt="" />
               </div>
 
               <p className="lead">
-                I break down complex user experinece problems to create
-                integritiy focussed solutions that connect billions of people
+                I break down complex problems into clean, dependable software
+                &mdash; full-stack web products and practical AI that
+                businesses and their users can trust.
               </p>
               <div className="button-box d-flex flex-wrap align-items-center">
-                <a href="#" className="btn tj-btn-secondary">
-                  Download CV
+                <a href="#contact-section" className="btn tj-btn-secondary">
+                  Contact us
                 </a>
                 <ul className="ul-reset social-icons">
                   <li>
@@ -87,7 +106,7 @@ const Hero = () => {
                   </li>
                   <li>
                     <a
-                      href="https://www.linkedin.com/mwlite/in/stanley-chidimma"
+                      href="https://www.linkedin.com/in/stanley-chidimma"
                       target="_blank"
                       rel="noreferrer"
                     >
@@ -109,7 +128,7 @@ const Hero = () => {
           </div>
           <div className="col-md-6 d-none d-md-block">
             <div className="hero-image-box text-center">
-              <img src="assets/img/hero/me.png" alt="" />
+              <img src="/assets/img/mk.png" alt="" />
             </div>
           </div>
         </div>
@@ -121,7 +140,7 @@ const Hero = () => {
                 <div className="number">
                   <span
                     className="odometer odometer-theme-default"
-                    data-count="4"
+                    data-count="5"
                   >
                     0
                   </span>
@@ -171,7 +190,7 @@ const Hero = () => {
                 <div className="number">
                   <span
                     className="odometer odometer-theme-default"
-                    data-count="4"
+                    data-count="5"
                   >
                     0
                   </span>

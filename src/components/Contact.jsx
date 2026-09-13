@@ -72,11 +72,12 @@ const Contact = () => {
                             name="conService"
                             id="conService"
                             className="tj-nice-select"
+                            defaultValue=""
                           >
-                            <option value="" selected disabled>
+                            <option value="" disabled>
                               Choose Service
                             </option>
-                            <option value="braning">UI/UX Design</option>
+                            <option value="ai">AI Mastery</option>
                             <option value="web">Digital Marketing</option>
                             <option value="uxui">Front End</option>
                             <option value="app">Back End</option>

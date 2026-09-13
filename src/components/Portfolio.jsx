@@ -41,7 +41,7 @@ const Portfolio = () => {
                 <div className="gutter-sizer"></div>
                 <div className="portfolio-item branding">
                   <div className="image-box">
-                    <img src="assets/img/portfolio/2.png" alt="" />
+                    <img src="/assets/img/portfolio/2.png" alt="" />
                   </div>
                   <div className="content-box">
                     <h3 className="portfolio-title">GrandBitVerse</h3>
@@ -55,7 +55,7 @@ const Portfolio = () => {
                 </div>
                 <div className="portfolio-item uxui">
                   <div className="image-box">
-                    <img src="assets/img/portfolio/1.png" alt="" />
+                    <img src="/assets/img/portfolio/1.png" alt="" />
                   </div>
                   <div className="content-box">
                     <h3 className="portfolio-title">SwiftGrand</h3>
@@ -69,7 +69,7 @@ const Portfolio = () => {
                 </div>
                 <div className="portfolio-item mobile-app">
                   <div className="image-box">
-                    <img src="assets/img/portfolio/3.png" alt="" />
+                    <img src="/assets/img/portfolio/3.png" alt="" />
                   </div>
                   <div className="content-box">
                     <h3 className="portfolio-title">ExperVista</h3>
@@ -83,7 +83,7 @@ const Portfolio = () => {
                 </div>
                 <div className="portfolio-item branding">
                   <div className="image-box">
-                    <img src="assets/img/portfolio/4.png" alt="" />
+                    <img src="/assets/img/portfolio/4.png" alt="" />
                   </div>
                   <div className="content-box">
                     <h3 className="portfolio-title">BoomTrade</h3>
@@ -107,7 +107,7 @@ const Portfolio = () => {
         className="popup_content_area zoom-anim-dialog mfp-hide"
       >
         <div className="popup_modal_img">
-          <img src="./assets/img/portfolio/2.png" alt="" />
+          <img src="/assets/img/portfolio/2.png" alt="" />
         </div>
         <div className="popup_modal_content">
           <div className="portfolio_info">
@@ -158,7 +158,7 @@ const Portfolio = () => {
         className="popup_content_area zoom-anim-dialog mfp-hide"
       >
         <div className="popup_modal_img">
-          <img src="./assets/img/portfolio/1.png" alt="" />
+          <img src="/assets/img/portfolio/1.png" alt="" />
         </div>
         <div className="popup_modal_content">
           <div className="portfolio_info">
@@ -210,7 +210,7 @@ const Portfolio = () => {
         className="popup_content_area zoom-anim-dialog mfp-hide"
       >
         <div className="popup_modal_img">
-          <img src="./assets/img/portfolio/3.png" alt="" />
+          <img src="/assets/img/portfolio/3.png" alt="" />
         </div>
         <div className="popup_modal_content">
           <div className="portfolio_info">
@@ -259,7 +259,7 @@ const Portfolio = () => {
         className="popup_content_area zoom-anim-dialog mfp-hide"
       >
         <div className="popup_modal_img">
-          <img src="./assets/img/portfolio/4.png" alt="" />
+          <img src="/assets/img/portfolio/4.png" alt="" />
         </div>
         <div className="popup_modal_content">
           <div className="portfolio_info">

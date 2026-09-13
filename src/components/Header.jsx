@@ -1,23 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 const Header = () => {
-  useEffect(() => {
-    if (window.$) {
-      // Hamburger Menu
-      window.$(".menu-bar").on("click", function () {
-        window.$(".menu-bar").toggleClass("menu-bar-toggeled");
-        window.$(".header-menu").toggleClass("opened");
-        window.$("body").toggleClass("overflow-hidden");
-      });
-
-      window.$(".header-menu ul li a").on("click", function () {
-        window.$(".menu-bar").removeClass("menu-bar-toggeled");
-        window.$(".header-menu").removeClass("opened");
-        window.$("body").removeClass("overflow-hidden");
-      });
-    }
-  }, []);
-
   return (
     <>
       {/* HEADER START */}
@@ -26,15 +9,15 @@ const Header = () => {
           <div className="row">
             <div className="col-12 d-flex flex-wrap align-items-center">
               <div className="logo-box">
-                <a href="index.html">
-                  <img src="assets/img/logo/logo.png" alt="" />
+                <a href="/">
+                  <img src="/assets/img/logo/logo.png" alt="" />
                 </a>
               </div>
 
               <div className="header-info-list d-none d-md-inline-block">
                 <ul className="ul-reset">
                   <li>
-                    <a href="index.html">MkstanCreative</a>
+                    <a href="/">MkstanCreative</a>
                   </li>
                 </ul>
               </div>
@@ -91,15 +74,15 @@ const Header = () => {
           <div className="row">
             <div className="col-12 d-flex flex-wrap align-items-center">
               <div className="logo-box">
-                <a href="index.html">
-                  <img src="assets/img/logo/logo.png" alt="" />
+                <a href="/">
+                  <img src="/assets/img/logo/logo.png" alt="" />
                 </a>
               </div>
 
               <div className="header-info-list d-none d-md-inline-block">
                 <ul className="ul-reset">
                   <li>
-                    <a href="index.html">MkstanCreative</a>
+                    <a href="/">MkstanCreative</a>
                   </li>
                 </ul>
               </div>

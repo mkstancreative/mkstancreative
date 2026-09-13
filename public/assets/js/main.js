@@ -12,10 +12,8 @@ Description: Gerold - Personal Portfolio HTML5 Template
 ==================== JS INDEX ======================
 ****************************************************
 // Data js
-// Sidebar Navigation
 // Sticky Header
 // Hamburger Menu
-// Scroll To Section
 // OnePage Active Class
 // Portfolio Filter
 // Portfolio Gallery Carousel
@@ -23,37 +21,50 @@ Description: Gerold - Personal Portfolio HTML5 Template
 // Nice Select
 // ALL Popup
 // Preloader
-// Sidebar Hover BG Color
 // Services Hover BG
 // Portfolio Filter BG Color
-// Funfact
 // WoW Js
+// Contact Form
 
 ****************************************************/
+
+/*
+ * NOTE: This file no longer self-executes on `document.ready` / `window.load`.
+ * The markup is rendered by React, which mounts *after* those events fire, so
+ * every selector below used to match zero elements (most visibly, the preloader
+ * was never dismissed and the page stayed black). Instead we expose
+ * `window.initTheme()`, which <App /> calls once the DOM is committed and laid
+ * out. The guard makes it safe to call more than once (e.g. React StrictMode).
+ */
 
 (function ($) {
   "use strict";
 
-  /*------------------------------------------------------
-  /  Data js
-  /------------------------------------------------------*/
-  $("[data-bg-image]").each(function () {
-    $(this).css(
-      "background-image",
-      "url(" + $(this).attr("data-bg-image") + ")"
-    );
-  });
+  var initialized = false;
 
-  $("[data-bg-color]").each(function () {
-    $(this).css("background-color", $(this).attr("data-bg-color"));
-  });
+  window.initTheme = function initTheme() {
+    if (initialized) return;
+    initialized = true;
 
-  $(document).ready(function ($) {
     /*------------------------------------------------------
-  	/  Sticky Header
-  	/------------------------------------------------------*/
+    /  Data js
+    /------------------------------------------------------*/
+    $("[data-bg-image]").each(function () {
+      $(this).css(
+        "background-image",
+        "url(" + $(this).attr("data-bg-image") + ")"
+      );
+    });
+
+    $("[data-bg-color]").each(function () {
+      $(this).css("background-color", $(this).attr("data-bg-color"));
+    });
+
+    /*------------------------------------------------------
+    /  Sticky Header
+    /------------------------------------------------------*/
     var lastScrollTop = 0;
-    $(window).scroll(function () {
+    $(window).on("scroll", function () {
       var scroll = $(window).scrollTop();
 
       if (scroll > 300) {
@@ -72,8 +83,8 @@ Description: Gerold - Personal Portfolio HTML5 Template
     });
 
     /*------------------------------------------------------
-  	/  Hamburger Menu
-  	/------------------------------------------------------*/
+    /  Hamburger Menu
+    /------------------------------------------------------*/
     $(".menu-bar").on("click", function () {
       $(".menu-bar").toggleClass("menu-bar-toggeled");
       $(".header-menu").toggleClass("opened");
@@ -87,26 +98,79 @@ Description: Gerold - Personal Portfolio HTML5 Template
     });
 
     /*------------------------------------------------------
-  	/  OnePage Active Class
-  	/------------------------------------------------------*/
-    $(".header-menu nav ul").onePageNav({
-      currentClass: "current-menu-ancestor",
-      changeHash: false,
-      easing: "swing",
+    /  Scroll To Section
+    /------------------------------------------------------*/
+    // onePageNav only owns the two header menus. Every other in-page link
+    // (the hero CTA, the footer nav) fell back to a native anchor jump, which
+    // the SmoothScroll library intercepts, so those links often did nothing.
+    // Handle them here so all in-page links behave the same way.
+    $(document).on("click", 'a[href^="#"]', function (e) {
+      var href = $(this).attr("href");
+      if (!href || href === "#") return;
+      // Leave the header menus to onePageNav.
+      if ($(this).closest(".header-menu nav ul").length) return;
+
+      var target;
+      try {
+        target = $(href);
+      } catch (err) {
+        return; // not a usable selector
+      }
+      if (!target.length) return;
+
+      e.preventDefault();
+      var top = target.offset().top;
+      // Prefer native smooth scrolling, which the browser drives itself;
+      // jQuery's animate() runs on rAF and stalls in a throttled tab. Both
+      // are no-ops while the page is hidden, so jump straight there instead -
+      // there is nobody watching the animation anyway.
+      var canSmooth =
+        "scrollBehavior" in document.documentElement.style && !document.hidden;
+      if (canSmooth) {
+        window.scrollTo({ top: top, behavior: "smooth" });
+      } else {
+        window.scrollTo(0, top);
+      }
     });
 
     /*------------------------------------------------------
-  	/  Portfolio Filter
-  	/------------------------------------------------------*/
-    var $grid = $(".portfolio-box").isotope({
-      // options
-      masonry: {
-        columnWidth: ".portfolio-box .portfolio-sizer",
-        gutter: ".portfolio-box .gutter-sizer",
-      },
-      itemSelector: ".portfolio-box .portfolio-item",
-      percentPosition: true,
-    });
+    /  OnePage Active Class
+    /------------------------------------------------------*/
+    if ($.fn.onePageNav) {
+      $(".header-menu nav ul").onePageNav({
+        currentClass: "current-menu-ancestor",
+        changeHash: false,
+        easing: "swing",
+      });
+    }
+
+    /*------------------------------------------------------
+    /  Portfolio Filter
+    /------------------------------------------------------*/
+    var $grid = null;
+    if ($.fn.isotope && $(".portfolio-box").length > 0) {
+      $grid = $(".portfolio-box").isotope({
+        // options
+        masonry: {
+          columnWidth: ".portfolio-box .portfolio-sizer",
+          gutter: ".portfolio-box .gutter-sizer",
+        },
+        itemSelector: ".portfolio-box .portfolio-item",
+        percentPosition: true,
+      });
+
+      // Images load after Isotope measures the grid, which leaves items
+      // overlapping. Re-layout once every image inside the grid has settled.
+      $(".portfolio-box img").each(function () {
+        if (this.complete) return;
+        $(this).on("load error", function () {
+          $grid.isotope("layout");
+        });
+      });
+      $(window).on("load", function () {
+        $grid.isotope("layout");
+      });
+    }
 
     // filter items on button click
     $(".filter-button-group").on("click", "button", function () {
@@ -114,15 +178,17 @@ Description: Gerold - Personal Portfolio HTML5 Template
       $(this).addClass("active");
 
       var filterValue = $(this).attr("data-filter");
-      $grid.isotope({
-        filter: filterValue,
-      });
+      if ($grid) {
+        $grid.isotope({
+          filter: filterValue,
+        });
+      }
     });
 
     /*------------------------------------------------------
-  	/  Portfolio Gallery Carousel
-  	/------------------------------------------------------*/
-    $(".portfolio_gallery.owl-carousel").owlCarousel({
+    /  Portfolio Gallery Carousel
+    /------------------------------------------------------*/
+    initCarousel($(".portfolio_gallery.owl-carousel"), {
       items: 2,
       loop: true,
       lazyLoad: true,
@@ -154,9 +220,9 @@ Description: Gerold - Personal Portfolio HTML5 Template
     });
 
     /*------------------------------------------------------
-  	/ Testimonial Carousel
-  	/------------------------------------------------------*/
-    $(".testimonial-carousel.owl-carousel").owlCarousel({
+    / Testimonial Carousel
+    /------------------------------------------------------*/
+    initCarousel($(".testimonial-carousel.owl-carousel"), {
       loop: true,
       margin: 30,
       nav: false,
@@ -179,9 +245,9 @@ Description: Gerold - Personal Portfolio HTML5 Template
     });
 
     /*------------------------------------------------------
-  	/ Post Gallery Carousel
-  	/------------------------------------------------------*/
-    $(".tj-post__gallery.owl-carousel").owlCarousel({
+    / Post Gallery Carousel
+    /------------------------------------------------------*/
+    initCarousel($(".tj-post__gallery.owl-carousel"), {
       items: 1,
       loop: true,
       margin: 30,
@@ -197,15 +263,17 @@ Description: Gerold - Personal Portfolio HTML5 Template
     });
 
     /*------------------------------------------------------
-  	/  Nice Select
-  	/------------------------------------------------------*/
-    $("select").niceSelect();
+    /  Nice Select
+    /------------------------------------------------------*/
+    if ($.fn.niceSelect) {
+      $("select").niceSelect();
+    }
 
     /*------------------------------------------------------
-  	/  ALL Popup
-  	/------------------------------------------------------*/
-    if ($(".popup_video").length > 0) {
-      $(`.popup_video`).lightcase({
+    /  ALL Popup
+    /------------------------------------------------------*/
+    if ($.fn.lightcase && $(".popup_video").length > 0) {
+      $(".popup_video").lightcase({
         transition: "elastic",
         showSequenceInfo: false,
         slideshow: false,
@@ -216,44 +284,119 @@ Description: Gerold - Personal Portfolio HTML5 Template
       });
     }
 
-    $(".modal-popup").magnificPopup({
-      type: "inline",
-      fixedContentPos: false,
-      fixedBgPos: true,
-      overflowY: "auto",
-      closeBtnInside: true,
-      preloader: false,
-      midClick: true,
-      removalDelay: 300,
-      mainClass: "popup-mfp",
-    });
-  });
+    if ($.fn.magnificPopup) {
+      $(".modal-popup").magnificPopup({
+        type: "inline",
+        fixedContentPos: false,
+        fixedBgPos: true,
+        overflowY: "auto",
+        closeBtnInside: true,
+        preloader: false,
+        midClick: true,
+        removalDelay: 300,
+        mainClass: "popup-mfp",
+        callbacks: {
+          open: function () {
+            // The portfolio galleries live inside `.mfp-hide` containers, so
+            // Owl Carousel measured them at zero width on init ("Can not
+            // detect viewport width") and they opened collapsed. Re-measure
+            // now that the popup is actually laid out.
+            var $popup = this.content;
+            if (!$popup) return;
+            setTimeout(function () {
+              $popup.find(".owl-carousel").each(function () {
+                var owl = $(this).data("owl.carousel");
+                if (owl) {
+                  owl.onThrottledResize
+                    ? owl.onThrottledResize()
+                    : $(this).trigger("refresh.owl.carousel");
+                } else {
+                  $(this).trigger("refresh.owl.carousel");
+                }
+              });
+            }, 0);
+          },
+        },
+      });
+    }
 
-  $(window).on("load", function () {
     /*------------------------------------------------------
-  	/  WoW Js
-  	/------------------------------------------------------*/
-    var wow = new WOW({
-      boxClass: "wow", // default
-      animateClass: "animated", // default
-      offset: 100, // default
-      mobile: true, // default
-      live: true, // default
-    });
-    wow.init();
+    /  WoW Js
+    /------------------------------------------------------*/
+    if (window.WOW) {
+      var wow = new WOW({
+        boxClass: "wow", // default
+        animateClass: "animated", // default
+        offset: 100, // default
+        mobile: true, // default
+        live: true, // default
+      });
+      wow.init();
+    }
 
     /*------------------------------------------------------
-  	/  Preloader
-  	/------------------------------------------------------*/
-    const svg = document.getElementById("preloaderSvg");
-    const svgText = document.querySelector(
-      ".hero-section .intro_text svg text"
-    );
-    const tl = gsap.timeline({
+    /  Preloader
+    /------------------------------------------------------*/
+    revealPage();
+
+    /*------------------------------------------------------
+    /  Services Hover BG
+    /------------------------------------------------------*/
+    service_animation();
+
+    /*------------------------------------------------------
+    /  Portfolio Filter BG Color
+    /------------------------------------------------------*/
+    filter_animation();
+
+    /*------------------------------------------------------
+    /  Contact Form
+    /------------------------------------------------------*/
+    initContactForm();
+  };
+
+  /*------------------------------------------------------
+  /  Owl Carousel init
+  /------------------------------------------------------*/
+  // Owl logs "Can not detect viewport width" and renders an empty shell when
+  // it is initialised on a container with no children, which is what the
+  // placeholder `.portfolio_gallery` divs are. Only initialise real content.
+  function initCarousel($el, options) {
+    if (!$el.length || !$.fn.owlCarousel) return;
+    $el.each(function () {
+      if ($(this).children().length === 0) return;
+      $(this).owlCarousel(options);
+    });
+  }
+
+  /*------------------------------------------------------
+  /  Preloader animation
+  /------------------------------------------------------*/
+  function revealPage() {
+    var $preloader = $(".preloader");
+    if (!$preloader.length) return;
+
+    var svg = document.getElementById("preloaderSvg");
+    var svgText = document.querySelector(".hero-section .intro_text svg text");
+
+    function startStrokeAnimation() {
+      // `svgText` is optional markup - only animate it when it is present.
+      if (svgText) svgText.classList.add("animate-stroke");
+    }
+
+    // Without GSAP the timeline can never run, so hide the overlay outright
+    // rather than leaving the whole page behind a black screen.
+    if (!window.gsap || !svg) {
+      $preloader.css({ display: "none", zIndex: -1 });
+      startStrokeAnimation();
+      return;
+    }
+
+    var tl = gsap.timeline({
       onComplete: startStrokeAnimation,
     });
-    const curve = "M0 502S175 272 500 272s500 230 500 230V0H0Z";
-    const flat = "M0 2S175 1 500 1s500 1 500 1V0H0Z";
+    var curve = "M0 502S175 272 500 272s500 230 500 230V0H0Z";
+    var flat = "M0 2S175 1 500 1s500 1 500 1V0H0Z";
 
     tl.to(".preloader-heading .load-text , .preloader-heading .cont", {
       delay: 1.5,
@@ -281,129 +424,168 @@ Description: Gerold - Personal Portfolio HTML5 Template
       display: "none",
     });
 
-    function startStrokeAnimation() {
-      // Add a class or directly apply styles to trigger the stroke animation
-      svgText.classList.add("animate-stroke");
-    }
-
-    /*------------------------------------------------------
-  	/  Services Hover BG
-  	/------------------------------------------------------*/
-    function service_animation() {
-      var active_bg = $(".services-widget .active-bg");
-      var element = $(".services-widget .current");
-      $(".services-widget .service-item").on("mouseenter", function () {
-        var e = $(this);
-        activeService(active_bg, e);
-      });
-      $(".services-widget").on("mouseleave", function () {
-        element = $(".services-widget .current");
-        activeService(active_bg, element);
-        element.closest(".service-item").siblings().removeClass("mleave");
-      });
-      activeService(active_bg, element);
-    }
-    service_animation();
-
-    function activeService(active_bg, e) {
-      if (!e.length) {
-        return false;
+    // Safety net: the preloader sits above everything, so if the timeline is
+    // ever interrupted the whole site is unreachable behind a black screen.
+    // Force it away if it is somehow still up well after the animation should
+    // have finished.
+    setTimeout(function () {
+      if ($preloader.css("display") !== "none") {
+        tl.progress(1);
+        $preloader.css({ display: "none", zIndex: -1 });
+        startStrokeAnimation();
       }
-      var topOff = e.offset().top;
-      var height = e.outerHeight();
-      var menuTop = $(".services-widget").offset().top;
-      e.closest(".service-item").removeClass("mleave");
-      e.closest(".service-item").siblings().addClass("mleave");
-      active_bg.css({
-        top: topOff - menuTop + "px",
-        height: height + "px",
-      });
-    }
+    }, 8000);
+  }
+
+  /*------------------------------------------------------
+  /  Services hover background
+  /------------------------------------------------------*/
+  function service_animation() {
+    var active_bg = $(".services-widget .active-bg");
+    if (!active_bg.length) return;
+
+    var element = $(".services-widget .current");
+    $(".services-widget .service-item").on("mouseenter", function () {
+      var e = $(this);
+      activeService(active_bg, e);
+    });
+    $(".services-widget").on("mouseleave", function () {
+      element = $(".services-widget .current");
+      activeService(active_bg, element);
+      element.closest(".service-item").siblings().removeClass("mleave");
+    });
+    activeService(active_bg, element);
 
     $(".services-widget .service-item").on("click", function () {
       $(".services-widget .service-item").removeClass("current");
       $(this).addClass("current");
     });
 
-    /*------------------------------------------------------
-  	/  Portfolio Filter BG Color
-  	/------------------------------------------------------*/
-    function filter_animation() {
-      var active_bg = $(".portfolio-filter .button-group .active-bg");
-      var element = $(".portfolio-filter .button-group .active");
-      $(".portfolio-filter .button-group button").on("click", function () {
-        var e = $(this);
-        activeFilterBtn(active_bg, e);
-      });
-      activeFilterBtn(active_bg, element);
+    // Keep the highlight aligned when the layout reflows.
+    $(window).on("resize", function () {
+      activeService(active_bg, $(".services-widget .current"));
+    });
+  }
+
+  function activeService(active_bg, e) {
+    if (!e || !e.length) {
+      return false;
     }
-    filter_animation();
-
-    function activeFilterBtn(active_bg, e) {
-      if (!e.length) {
-        return false;
-      }
-      var leftOff = e.offset().left;
-      var width = e.outerWidth();
-      var menuLeft = $(".portfolio-filter .button-group").offset().left;
-      e.closest("button").removeClass("active");
-      e.closest("button")
-        .siblings()
-        .addClass(".portfolio-filter .button-group");
-      active_bg.css({
-        left: leftOff - menuLeft + "px",
-        width: width + "px",
-      });
+    var widget = $(".services-widget");
+    if (!widget.length) {
+      return false;
     }
+    var topOff = e.offset().top;
+    var height = e.outerHeight();
+    var menuTop = widget.offset().top;
+    e.closest(".service-item").removeClass("mleave");
+    e.closest(".service-item").siblings().addClass("mleave");
+    active_bg.css({
+      top: topOff - menuTop + "px",
+      height: height + "px",
+    });
+  }
 
-    /*------------------------------------------------------
-  	/  Funfact
-  	/------------------------------------------------------*/
-    // if ($(".odometer").length > 0) {
-    //   $(".odometer").appear(function () {
-    //     var odo = $(".odometer");
-    //     odo.each(function () {
-    //       var countNumber = $(this).attr("data-count");
-    //       $(this).html(countNumber);
-    //     });
-    //   });
-    // }
+  /*------------------------------------------------------
+  /  Portfolio filter background
+  /------------------------------------------------------*/
+  function filter_animation() {
+    var active_bg = $(".portfolio-filter .button-group .active-bg");
+    if (!active_bg.length) return;
 
-    // Form Validation
-    /* contact form */
-    if ($("#contact-form").length > 0) {
-      $("#contact-form").validate({
-        rules: {
-          conName: "required",
-          conEmail: {
-            required: true,
-            email: true,
+    var element = $(".portfolio-filter .button-group .active");
+    $(".portfolio-filter .button-group button").on("click", function () {
+      var e = $(this);
+      activeFilterBtn(active_bg, e);
+    });
+    activeFilterBtn(active_bg, element);
+
+    // Keep the highlight aligned when the layout reflows.
+    $(window).on("resize", function () {
+      activeFilterBtn(
+        active_bg,
+        $(".portfolio-filter .button-group button.active")
+      );
+    });
+  }
+
+  function activeFilterBtn(active_bg, e) {
+    if (!e || !e.length) {
+      return false;
+    }
+    var group = $(".portfolio-filter .button-group");
+    if (!group.length) {
+      return false;
+    }
+    var leftOff = e.offset().left;
+    var width = e.outerWidth();
+    var menuLeft = group.offset().left;
+    active_bg.css({
+      left: leftOff - menuLeft + "px",
+      width: width + "px",
+    });
+  }
+
+  /*------------------------------------------------------
+  /  Contact form validation + submit
+  /------------------------------------------------------*/
+  function initContactForm() {
+    var $form = $("#contact-form");
+    if (!$form.length || !$.fn.validate) return;
+
+    // The endpoint is overridable so the form can point at whatever mail
+    // service this site is deployed behind.
+    var endpoint =
+      $form.attr("action") ||
+      window.CONTACT_FORM_ENDPOINT ||
+      "/assets/mail/contact-form.php";
+
+    $form.validate({
+      rules: {
+        conName: "required",
+        conEmail: {
+          required: true,
+          email: true,
+        },
+      },
+
+      messages: {
+        conName: "Enter your name.",
+        conEmail: "Enter a valid email.",
+      },
+      submitHandler: function (form) {
+        // start ajax request
+        $.ajax({
+          type: "POST",
+          url: endpoint,
+          data: $form.serialize(),
+          cache: false,
+          success: function (data) {
+            if (data == "Y") {
+              showModal("#message_sent");
+              form.reset();
+            } else {
+              showModal("#message_fail");
+            }
           },
-        },
+          // Previously a failing request did nothing at all, so the form
+          // looked like it had silently succeeded.
+          error: function () {
+            showModal("#message_fail");
+          },
+        });
+        return false;
+      },
+    });
+  }
 
-        messages: {
-          conName: "Enter your name.",
-          conEmail: "Enter a valid email.",
-        },
-        submitHandler: function (form) {
-          // start ajax request
-          $.ajax({
-            type: "POST",
-            url: "assets/mail/contact-form.php",
-            data: $("#contact-form").serialize(),
-            cache: false,
-            success: function (data) {
-              if (data == "Y") {
-                $("#message_sent").modal("show");
-                $("#contact-form").trigger("reset");
-              } else {
-                $("#message_fail").modal("show");
-              }
-            },
-          });
-        },
-      });
+  function showModal(selector) {
+    var el = document.querySelector(selector);
+    if (!el) return;
+    if (window.bootstrap && window.bootstrap.Modal) {
+      window.bootstrap.Modal.getOrCreateInstance(el).show();
+    } else if ($.fn.modal) {
+      $(el).modal("show");
     }
-    /* !contact form */
-  });
+  }
 })(jQuery);
