@@ -70,14 +70,26 @@ const Hero = () => {
         <div className="row align-items-center">
           <div className="col-md-6">
             <div className="hero-content-box">
-              <span className="hero-sub-title">I am Mk Stanley</span>
-              <h1 className="hero-title">
-                Software <br />
-                Developer
+              {/* One h1 spanning the name and the role: search engines read
+                  the page's single most important heading as "Stanley Chidimma
+                  Makuochukwu - Software Developer" rather than a bare job
+                  title. The look is unchanged - both spans keep the styling
+                  they had as separate elements. */}
+              <h1 className="hero-heading">
+                <span className="hero-sub-title">
+                  I am Stanley Chidimma Makuochukwu
+                </span>
+                <span className="hero-title">
+                  Software <br />
+                  Developer
+                </span>
               </h1>
 
               <div className="hero-image-box d-md-none text-center">
-                <img src="/assets/img/mk.png" alt="Mk Stanley" />
+                <img
+                  src="/assets/img/mk.png"
+                  alt="Stanley Chidimma Makuochukwu, software developer at MkstanCreative"
+                />
               </div>
 
               <p className="lead">

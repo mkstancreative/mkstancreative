@@ -695,27 +695,30 @@ body.loaded {
 .tj-header-area.header-2 {
     width: 100%;
     position: fixed;
-    top: -90px;
+    top: 0;
     left: 0;
     padding: 15px 0;
     z-index: 100;
     opacity: 0;
-    transition: 0.3s;
+    /* parked by its own height plus the shadow blur, so the glow can't spill
+       back into the top of the viewport while it fades */
+    transform: translateY(calc(-100% - 40px));
+    transition: transform 0.3s ease, opacity 0.3s ease;
     background-color: var(--tj-black-2);
     box-shadow: 0 0 30px rgba(135, 80, 247, 0.2);
 }
 
 .tj-header-area.header-2.sticky {
-    top: 0;
     opacity: 1;
+    transform: translateY(0);
     animation: bounceInDown 1s;
     animation-duration: 1s;
     animation-fill-mode: both;
 }
 
 .tj-header-area.header-2.sticky-out {
-    top: -90px;
     opacity: 0;
+    transform: translateY(calc(-100% - 40px));
     animation: none;
     pointer-events: none;
 }

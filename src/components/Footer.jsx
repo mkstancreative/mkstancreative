@@ -7,7 +7,7 @@ const Footer = () => {
         <div className="row">
           <div className="col-md-12 text-center">
             <div className="footer-logo-box">
-              <a href="#">
+              <a href="#intro">
                 <img src="/assets/img/logo/mk-logo.png" alt="MkstanCreative" />
               </a>
             </div>
@@ -36,12 +36,11 @@ const Footer = () => {
               </nav>
             </div>
             <div className="copy-text">
+              {/* The legal name belongs in the footer anyway, and it gives
+                  the page a second plain-text mention of it for name searches. */}
               <p>
-                &copy; {new Date().getFullYear()} All rights reserved by
-                <a href="#" target="_blank" rel="noreferrer">
-                  {" "}
-                  MkstanCreative
-                </a>
+                &copy; {new Date().getFullYear()} MkstanCreative &mdash; Stanley
+                Chidimma Makuochukwu. All rights reserved.
               </p>
             </div>
           </div>

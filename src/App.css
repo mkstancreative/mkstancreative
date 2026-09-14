@@ -63,3 +63,23 @@ svg,
 a {
   -webkit-user-drag: none;
 }
+
+/* --------------------------------------------------------------------------
+   Hero heading: the name and the role are now one <h1> so the page has a
+   single heading carrying both. The theme's `h1..h6` rule would repaint the
+   name white and squash it to line-height 1.2, so the two properties the
+   wrapper would otherwise inherit down are pinned back to what the spans
+   computed to when they were separate elements.
+   -------------------------------------------------------------------------- */
+.hero-heading {
+  margin-bottom: 15px; /* the margin the <h1> used to contribute itself */
+}
+
+.hero-heading .hero-sub-title {
+  color: var(--tj-grey-3); /* #dddddd, the body colour it had outside the h1 */
+  line-height: 1.5;
+}
+
+.hero-heading .hero-title {
+  display: block; /* it is a span now; the <br /> layout depends on this */
+}
