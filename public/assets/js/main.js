@@ -98,6 +98,19 @@ Description: Gerold - Personal Portfolio HTML5 Template
     });
 
     /*------------------------------------------------------
+    /  Block native drag
+    /------------------------------------------------------*/
+    // `-webkit-user-drag` handles Chrome and Safari, but Firefox ignores it,
+    // so cancel the drag itself. Owl Carousel does its own mousedown-based
+    // dragging and is unaffected; anything that genuinely needs to be
+    // draggable can opt back in with draggable="true".
+    document.addEventListener("dragstart", function (e) {
+      var t = e.target;
+      if (t && t.closest && t.closest('[draggable="true"]')) return;
+      e.preventDefault();
+    });
+
+    /*------------------------------------------------------
     /  Scroll To Section
     /------------------------------------------------------*/
     // onePageNav only owns the two header menus. Every other in-page link

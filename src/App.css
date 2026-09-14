@@ -7,3 +7,54 @@
   display: flex;
   align-items: center;
 }
+
+/* --------------------------------------------------------------------------
+   Hero portrait: desaturated at rest, true colour on hover.
+   Guarded by `hover: hover` because touch devices never fire :hover - without
+   it the photo would sit grey permanently for every phone visitor.
+   -------------------------------------------------------------------------- */
+@media (hover: hover) {
+  .hero-image-box img {
+    filter: grayscale(100%);
+    /* The theme sets `transition: 0.3s` on this image - the shorthand, so it
+       covers *all* properties, which is what animated the 4.29deg rotate and
+       the border colour on hover. Declaring only `filter` here replaced that
+       shorthand outright and left the rotate with no transition, so it
+       snapped instead of easing. Every animated property is listed. */
+    transition: filter 0.45s ease, transform 0.3s ease, border-color 0.3s ease;
+  }
+
+  /* Matches the theme's own `img:hover` trigger so the colour, the rotate and
+     the border all fire together rather than from different hit areas. */
+  .hero-image-box img:hover,
+  .hero-image-box:focus-within img {
+    filter: grayscale(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-image-box img {
+    transition: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Lock the page against stray dragging.
+
+   Two separate things read as the page "coming loose":
+   - Native HTML drag: press and drag any image or link and the browser pulls
+     a translucent ghost copy out of the layout.
+   - Overscroll: dragging past the top or bottom rubber-bands the whole body,
+     and a sideways drag can trigger the browser's back-swipe.
+   -------------------------------------------------------------------------- */
+
+html,
+body {
+  overscroll-behavior: none;
+}
+
+img,
+svg,
+a {
+  -webkit-user-drag: none;
+}
