@@ -48,9 +48,14 @@
      and a sideways drag can trigger the browser's back-swipe.
    -------------------------------------------------------------------------- */
 
-html,
-body {
-  overscroll-behavior: none;
+/* X axis only, and only on the root.
+   `overscroll-behavior: none` on both axes broke scrolling on this theme: body
+   is a scroll container that cannot itself move, and `none` disabled the
+   scroll chaining that was carrying the wheel up to the document. Locking the
+   X axis alone still stops the sideways drag and the browser's back-swipe,
+   while leaving vertical scrolling completely untouched. */
+html {
+  overscroll-behavior-x: none;
 }
 
 img,

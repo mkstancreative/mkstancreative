@@ -132,9 +132,28 @@
    5. Belt and braces: nothing should ever scroll the page sideways
    -------------------------------------------------------------------------- */
 
+/* `overflow-x: hidden` belongs on the root element ONLY.
+   Putting it on <body> too gave body `overflow-y: auto`, which made it a
+   scroll container whose scrollHeight equalled its clientHeight - a container
+   that cannot scroll. The bundled SmoothScroll library then picked body as
+   its scroll target, cancelled the native wheel event, and scrolled that dead
+   container, so the wheel did nothing at all. Keep body's overflow visible. */
+html {
+  overflow-x: hidden;
+}
+
+/* The theme sets `overflow-x: hidden` on <body> as well, which computes its
+   overflow-y to `auto` and turns body into a scroll container whose content
+   exactly fills it - one that can never scroll. Everything still worked only
+   because the scroll chained up to the document. Put body's overflow back to
+   visible so the document is the one and only scroller. Horizontal clipping
+   is unaffected: `overflow-x: hidden` on the root propagates to the viewport. */
+body {
+  overflow-x: visible;
+}
+
 html,
 body {
-  overflow-x: hidden;
   max-width: 100%;
 }
 
