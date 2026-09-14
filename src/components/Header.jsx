@@ -10,7 +10,7 @@ const Header = () => {
             <div className="col-12 d-flex flex-wrap align-items-center">
               <div className="logo-box">
                 <a href="/">
-                  <img src="/assets/img/logo/mk-logo.svg" alt="MkstanCreative" />
+                  <img src="/assets/img/logo/mk-logo.png" alt="MkstanCreative" />
                 </a>
               </div>
 
@@ -69,13 +69,13 @@ const Header = () => {
         </div>
       </header>
 
-      <header className="tj-header-area header-2 header-sticky sticky-out">
+      <header className="tj-header-area header-2 header-sticky">
         <div className="container">
           <div className="row">
             <div className="col-12 d-flex flex-wrap align-items-center">
               <div className="logo-box">
                 <a href="/">
-                  <img src="/assets/img/logo/mk-logo.svg" alt="MkstanCreative" />
+                  <img src="/assets/img/logo/mk-logo.png" alt="MkstanCreative" />
                 </a>
               </div>
 

@@ -63,23 +63,15 @@ Description: Gerold - Personal Portfolio HTML5 Template
     /*------------------------------------------------------
     /  Sticky Header
     /------------------------------------------------------*/
-    var lastScrollTop = 0;
     $(window).on("scroll", function () {
       var scroll = $(window).scrollTop();
+      var $stickyHeader = $(".tj-header-area.header-sticky");
 
       if (scroll > 300) {
-        $(".tj-header-area.header-sticky").addClass("sticky");
-        $(".tj-header-area.header-sticky").removeClass("sticky-out");
-      } else if (scroll < lastScrollTop) {
-        if (scroll < 500) {
-          $(".tj-header-area.header-sticky").addClass("sticky-out");
-          $(".tj-header-area.header-sticky").removeClass("sticky");
-        }
+        $stickyHeader.addClass("sticky").removeClass("sticky-out");
       } else {
-        $(".tj-header-area.header-sticky").removeClass("sticky");
+        $stickyHeader.addClass("sticky-out").removeClass("sticky");
       }
-
-      lastScrollTop = scroll;
     });
 
     /*------------------------------------------------------

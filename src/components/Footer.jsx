@@ -8,7 +8,7 @@ const Footer = () => {
           <div className="col-md-12 text-center">
             <div className="footer-logo-box">
               <a href="#">
-                <img src="/assets/img/logo/mk-logo.svg" alt="MkstanCreative" />
+                <img src="/assets/img/logo/mk-logo.png" alt="MkstanCreative" />
               </a>
             </div>
             <div className="footer-menu">
