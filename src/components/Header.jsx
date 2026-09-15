@@ -114,7 +114,7 @@ const Header = () => {
 
               <div className="header-button">
                 <a
-                  href="mailto:mkstancreative@gmail.com"
+                  href="https://wa.me/2347068265165"
                   className="btn tj-btn-primary"
                 >
                   Contact

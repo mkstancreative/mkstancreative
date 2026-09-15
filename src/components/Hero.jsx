@@ -98,7 +98,7 @@ const Hero = () => {
                 businesses and their users can trust.
               </p>
               <div className="button-box d-flex flex-wrap align-items-center">
-                <a href="#contact-section" className="btn tj-btn-secondary">
+                <a href="https://wa.me/2347068265165" className="btn tj-btn-secondary">
                   Contact us
                 </a>
                 <ul className="ul-reset social-icons">
