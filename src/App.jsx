@@ -10,6 +10,7 @@ import Footer from "./components/Footer";
 import Resume from "./components/Resume";
 import Preloader from "./components/Preloader";
 import BackToTop from "./components/BackToTop";
+import WhatsAppButton from "./components/WhatsAppButton";
 import "./App.css";
 import "./responsive.css";
 
@@ -51,12 +52,13 @@ function App() {
     <>
       <Preloader />
       <BackToTop />
+      <WhatsAppButton />
       <Header />
       <main className="site-content" id="content">
         <Hero />
         <Services />
         <Portfolio />
-        <Resume />
+        {/* <Resume /> */}
         <Skills />
         {/* <Testimonials /> */}
         <Contact />

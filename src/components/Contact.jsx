@@ -79,8 +79,7 @@ const Contact = () => {
                             </option>
                             <option value="ai">AI Mastery</option>
                             <option value="web">Digital Marketing</option>
-                            <option value="uxui">Front End</option>
-                            <option value="app">Back End</option>
+                            <option value="fullstack">Full Stack</option>
                           </select>
                         </div>
                       </div>

@@ -83,3 +83,150 @@ a {
 .hero-heading .hero-title {
   display: block; /* it is a span now; the <br /> layout depends on this */
 }
+
+/* --------------------------------------------------------------------------
+   Market Place popup: one card per product, led by a screenshot of the
+   product's own landing page framed as a browser window.
+   -------------------------------------------------------------------------- */
+.market-popup {
+  padding-top: 50px;
+}
+
+.market-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 1px solid var(--tj-grey-2);
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--tj-white);
+  transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+
+.market-card:hover {
+  border-color: var(--tj-theme-primary);
+  box-shadow: 0 18px 40px rgba(42, 20, 84, 0.14);
+  transform: translateY(-4px);
+}
+
+.market-card-shot {
+  display: block;
+  background: var(--tj-theme-secondary);
+  padding: 18px 18px 0;
+}
+
+.market-card-bar {
+  display: flex;
+  gap: 6px;
+  padding: 9px 12px;
+  background: var(--tj-theme-accent-1);
+  border-radius: 10px 10px 0 0;
+}
+
+.market-card-bar i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.market-card-shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: top;
+  transition: transform 0.5s;
+}
+
+.market-card:hover .market-card-shot img {
+  transform: scale(1.02);
+}
+
+.market-card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1;
+  padding: 24px 26px 28px;
+}
+
+.market-card-tag {
+  font-size: 12px;
+  font-weight: var(--tj-fw-sbold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--tj-theme-primary);
+  margin-bottom: 8px;
+}
+
+.market-card-title {
+  font-size: var(--tj-fz-h4);
+  color: var(--tj-black-2);
+  margin-bottom: 10px;
+}
+
+.market-card-body p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--tj-grey-1);
+  margin-bottom: 16px;
+}
+
+.market-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0;
+  margin: 0 0 24px;
+  list-style: none;
+}
+
+.market-card-meta li {
+  font-size: 13px;
+  font-weight: var(--tj-fw-medium);
+  color: var(--tj-theme-secondary);
+  background: rgba(135, 80, 247, 0.1);
+  border-radius: 999px;
+  padding: 5px 12px;
+}
+
+.market-card-body .btn {
+  margin-top: auto;
+}
+
+/* --------------------------------------------------------------------------
+   Floating WhatsApp button. Sits in the same right-hand column as the
+   back-to-top button (right: 50px / 20px on phones) and stacks above it.
+   -------------------------------------------------------------------------- */
+.whatsapp-float {
+  position: fixed;
+  right: 46px;
+  bottom: 112px;
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: #25d366;
+  color: var(--tj-white);
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.whatsapp-float:hover,
+.whatsapp-float:focus-visible {
+  color: var(--tj-white);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 30px rgba(37, 211, 102, 0.45);
+}
+
+@media only screen and (max-width: 767px) {
+  .whatsapp-float {
+    right: 16px;
+    bottom: 80px;
+  }
+}

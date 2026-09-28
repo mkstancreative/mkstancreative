@@ -47,7 +47,7 @@ const Hero = () => {
           observer.disconnect();
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
     observer.observe(funfactArea);
 
@@ -94,17 +94,33 @@ const Hero = () => {
 
               <p className="lead">
                 I break down complex problems into clean, dependable software
-                &mdash; end-to-end web products and practical AI that
-                businesses and their users can trust.
+                &mdash; end-to-end web products and practical AI that businesses
+                and their users can trust.
               </p>
               <div className="button-box d-flex flex-wrap align-items-center">
-                <a href="https://wa.me/2347068265165" className="btn tj-btn-secondary">
+                <a
+                  href="https://wa.me/2347068265165"
+                  className="btn tj-btn-secondary"
+                >
                   Contact us
                 </a>
                 <ul className="ul-reset social-icons">
                   <li>
-                    <a href="#">
-                      <i className="fa-brands fa-twitter"></i>
+                    <a
+                      href="https://www.linkedin.com/in/stanley-chidimma"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <i className="fa-brands fa-linkedin-in"></i>
+                    </a>
+                  </li>
+                   <li>
+                    <a
+                      href="https://github.com/mkstancreative"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <i className="fa-brands fa-github"></i>
                     </a>
                   </li>
                   <li>
@@ -118,22 +134,14 @@ const Hero = () => {
                   </li>
                   <li>
                     <a
-                      href="https://www.linkedin.com/in/stanley-chidimma"
+                      href="https://x.com/mkstancreative"
                       target="_blank"
                       rel="noreferrer"
                     >
-                      <i className="fa-brands fa-linkedin-in"></i>
+                      <i className="fa-brands fa-twitter"></i>
                     </a>
                   </li>
-                  <li>
-                    <a
-                      href="https://github.com/mkstancreative"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <i className="fa-brands fa-github"></i>
-                    </a>
-                  </li>
+                 
                 </ul>
               </div>
             </div>

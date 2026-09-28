@@ -93,14 +93,14 @@ const Services = () => {
                 >
                   <div className="left-box d-flex flex-wrap align-items-center">
                     <span className="number">03</span>
-                    <h3 className="service-title">Front End Development</h3>
+                    <h3 className="service-title">Full Stack Development</h3>
                   </div>
                   <div className="right-box">
                     <p>
-                      We create user-friendly interfaces that represent
-                      businesses effectively online. It focuses on professional
-                      design, intuitive user experience, and performance
-                      optimization.
+                      We build complete web products end to end, from fast,
+                      user-friendly interfaces to the secure APIs and databases
+                      behind them, so every layer works together reliably and
+                      scales with your business.
                     </p>
                   </div>
                   <i className="flaticon-up-right-arrow"></i>
@@ -109,20 +109,20 @@ const Services = () => {
                     className="service-link modal-popup"
                   ></button>
                 </div>
+
                 <div
                   className="service-item d-flex flex-wrap align-items-center wow fadeInUp"
                   data-wow-delay=".6s"
                 >
                   <div className="left-box d-flex flex-wrap align-items-center">
                     <span className="number">04</span>
-                    <h3 className="service-title">Back End Development</h3>
+                    <h3 className="service-title">Market Place</h3>
                   </div>
                   <div className="right-box">
                     <p>
-                      We focus on reliability, security, efficiency, and
-                      scalability, which enables seamless communication between
-                      front-end and back-end systems, ensuring optimal
-                      performance and user satisfaction.
+                      Ready-made digital products you can use today, from AI
+                      tools that turn long videos into short clips to practical
+                      guides for landing your first clients.
                     </p>
                   </div>
                   <i className="flaticon-up-right-arrow"></i>
@@ -153,7 +153,7 @@ const Services = () => {
         <div className="popup_modal_content">
           <div className="service_details">
             <div className="row">
-              <div className="col-lg-7 col-xl-8">
+              <div className="col-12">
                 <div className="service_details_content">
                   <div className="service_info">
                     <h6 className="subtitle">SERVICES</h6>
@@ -194,68 +194,6 @@ const Services = () => {
                   </div>
                 </div>
               </div>
-              <div className="col-lg-5 col-xl-4">
-                <div className="tj_main_sidebar">
-                  <div className="sidebar_widget services_list">
-                    <div className="widget_title">
-                      <h3 className="title">All Services</h3>
-                    </div>
-                    <ul>
-                      <li className="active">
-                        <button>
-                          <i className="flaticon-design"></i> OpenAI API
-                        </button>
-                      </li>
-                      <li>
-                        <button>
-                          <i className="flaticon-3d-movie"></i> Claude API
-                        </button>
-                      </li>
-                      <li>
-                        <button>
-                          <i className="flaticon-ux-design"></i> LangChain
-                        </button>
-                      </li>
-                      <li>
-                        <button>
-                          <i className="flaticon-web-design"></i> Vector
-                          Databases
-                        </button>
-                      </li>
-                      <li>
-                        <button>
-                          <i className="flaticon-ui-design"></i> Prompt
-                          Engineering
-                        </button>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="sidebar_widget contact_form">
-                    <div className="widget_title">
-                      <h3 className="title">Get in Touch</h3>
-                    </div>
-                    <form action="index.html">
-                      <div className="form_group">
-                        <input type="text" name="name" placeholder="Name" />
-                      </div>
-                      <div className="form_group">
-                        <input type="email" name="semail" placeholder="Email" />
-                      </div>
-                      <div className="form_group">
-                        <textarea
-                          name="smessage"
-                          placeholder="Your message"
-                        ></textarea>
-                      </div>
-                      <div className="form_btn">
-                        <button className="btn tj-btn-primary" type="submit">
-                          Send Message
-                        </button>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -271,7 +209,7 @@ const Services = () => {
         <div className="popup_modal_content">
           <div className="service_details">
             <div className="row">
-              <div className="col-lg-7 col-xl-8">
+              <div className="col-12">
                 <div className="service_details_content">
                   <div className="service_info">
                     <h6 className="subtitle">SERVICES</h6>
@@ -313,67 +251,6 @@ const Services = () => {
                   </div>
                 </div>
               </div>
-              <div className="col-lg-5 col-xl-4">
-                <div className="tj_main_sidebar">
-                  <div className="sidebar_widget services_list">
-                    <div className="widget_title">
-                      <h3 className="title">All Services</h3>
-                    </div>
-                    <ul>
-                      <li className="active">
-                        <button>
-                          <i className="flaticon-design"></i> Google Analytics
-                        </button>
-                      </li>
-                      <li>
-                        <button>
-                          <i className="flaticon-3d-movie"></i> Google Ads
-                        </button>
-                      </li>
-                      <li>
-                        <button>
-                          <i className="flaticon-ux-design"></i> Meta Ads
-                        </button>
-                      </li>
-                      <li>
-                        <button>
-                          <i className="flaticon-web-design"></i> Mailchimp
-                        </button>
-                      </li>
-                      <li>
-                        <button>
-                          <i className="flaticon-ui-design"></i> SEO &amp;
-                          Search Console
-                        </button>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="sidebar_widget contact_form">
-                    <div className="widget_title">
-                      <h3 className="title">Get in Touch</h3>
-                    </div>
-                    <form action="index.html">
-                      <div className="form_group">
-                        <input type="text" name="name" placeholder="Name" />
-                      </div>
-                      <div className="form_group">
-                        <input type="email" name="semail" placeholder="Email" />
-                      </div>
-                      <div className="form_group">
-                        <textarea
-                          name="smessage"
-                          placeholder="Your message"
-                        ></textarea>
-                      </div>
-                      <div className="form_btn">
-                        <button className="btn tj-btn-primary" type="submit">
-                          Send Message
-                        </button>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -389,107 +266,48 @@ const Services = () => {
         <div className="popup_modal_content">
           <div className="service_details">
             <div className="row">
-              <div className="col-lg-7 col-xl-8">
+              <div className="col-12">
                 <div className="service_details_content">
                   <div className="service_info">
                     <h6 className="subtitle">SERVICES</h6>
-                    <h2 className="title">Front End Development</h2>
+                    <h2 className="title">Full Stack Development</h2>
                     <div className="desc">
                       <p>
-                        The front end is the part of your product people
-                        actually touch. We build interfaces that are quick to
-                        understand, pleasant to use, and faithful to your brand
-                        on every screen size.
+                        We build the whole product, from the interface people
+                        actually touch to the databases, APIs and business logic
+                        that keep it running correctly under real load.
                       </p>
                       <p>
-                        Everything is built component by component in React, so
-                        your interface stays consistent as it grows and new
-                        features slot in without breaking what already works.
+                        Interfaces are built component by component in React,
+                        fast, accessible and faithful to your brand on every
+                        screen size. Behind them sit clean data models and
+                        well-documented REST APIs in Node.js and PHP, so your
+                        web app, mobile app and any third party share one source
+                        of truth.
                       </p>
                       <p>
-                        We treat speed and accessibility as requirements, not
-                        extras: fast first loads, keyboard and screen-reader
-                        support, and behaviour you can rely on across browsers.
+                        Owning both ends means fewer hand-offs and fewer gaps:
+                        security, performance and reliability are designed in
+                        from the start rather than patched on at the end.
                       </p>
                     </div>
                     <h3 className="title">Services Process</h3>
                     <div className="desc">
                       <p>
-                        Delivering a front end involves several key steps.
+                        Delivering a full stack product involves several key
+                        steps.
                       </p>
                     </div>
                     <ul>
                       <li>Requirement Gathering</li>
                       <li>Wireframing and Prototyping</li>
-                      <li>Component and Design System Setup</li>
+                      <li>Database and API Design</li>
                       <li>Responsive Interface Build</li>
-                      <li>API Integration</li>
-                      <li>Accessibility and Cross-Browser Testing</li>
-                      <li>Performance Optimization</li>
-                      <li>Launch and Handoff</li>
+                      <li>Business Logic and Integration</li>
+                      <li>Authentication and Security Hardening</li>
+                      <li>Testing and Performance Optimization</li>
+                      <li>Deployment, Monitoring and Scaling</li>
                     </ul>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-5 col-xl-4">
-                <div className="tj_main_sidebar">
-                  <div className="sidebar_widget services_list">
-                    <div className="widget_title">
-                      <h3 className="title">All Services</h3>
-                    </div>
-                    <ul>
-                      <li className="active">
-                        <button>
-                          <i className="flaticon-design"></i> HTML &amp; CSS
-                        </button>
-                      </li>
-                      <li>
-                        <button>
-                          <i className="flaticon-3d-movie"></i> JavaScript
-                        </button>
-                      </li>
-                      <li>
-                        <button>
-                          <i className="flaticon-ux-design"></i> React JS
-                        </button>
-                      </li>
-                      <li>
-                        <button>
-                          <i className="flaticon-web-design"></i> Bootstrap
-                          &amp; Tailwind
-                        </button>
-                      </li>
-                      <li>
-                        <button>
-                          <i className="flaticon-ui-design"></i> Responsive
-                          Design
-                        </button>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="sidebar_widget contact_form">
-                    <div className="widget_title">
-                      <h3 className="title">Get in Touch</h3>
-                    </div>
-                    <form action="index.html">
-                      <div className="form_group">
-                        <input type="text" name="name" placeholder="Name" />
-                      </div>
-                      <div className="form_group">
-                        <input type="email" name="semail" placeholder="Email" />
-                      </div>
-                      <div className="form_group">
-                        <textarea
-                          name="smessage"
-                          placeholder="Your message"
-                        ></textarea>
-                      </div>
-                      <div className="form_btn">
-                        <button className="btn tj-btn-primary" type="submit">
-                          Send Message
-                        </button>
-                      </div>
-                    </form>
                   </div>
                 </div>
               </div>
@@ -502,117 +320,118 @@ const Services = () => {
         id="service-wrapper4"
         className="popup_content_area zoom-anim-dialog mfp-hide"
       >
-        <div className="popup_modal_img">
-          <img src="/assets/img/services/modal-img.jpg" alt="" />
-        </div>
-        <div className="popup_modal_content">
+        <div className="popup_modal_content market-popup">
           <div className="service_details">
-            <div className="row">
-              <div className="col-lg-7 col-xl-8">
-                <div className="service_details_content">
-                  <div className="service_info">
-                    <h6 className="subtitle">SERVICES</h6>
-                    <h2 className="title">Back End Development</h2>
-                    <div className="desc">
-                      <p>
-                        The back end is everything your users never see but
-                        depend on: the databases, APIs and business logic that
-                        keep your product running correctly under real load.
-                      </p>
-                      <p>
-                        We design clean data models and well-documented REST
-                        APIs in Node.js and PHP, so your front end, your mobile
-                        app and any third party can all talk to one source of
-                        truth.
-                      </p>
-                      <p>
-                        Security is built in from the start, with proper
-                        authentication, validated input, and safe handling of
-                        the data your customers trust you with.
-                      </p>
-                    </div>
-                    <h3 className="title">Services Process</h3>
-                    <div className="desc">
-                      <p>
-                        Delivering a back end involves several key steps.
-                      </p>
-                    </div>
-                    <ul>
-                      <li>Requirement Gathering</li>
-                      <li>Database and Data Modelling</li>
-                      <li>API Design and Documentation</li>
-                      <li>Business Logic Implementation</li>
-                      <li>Authentication and Security Hardening</li>
-                      <li>Testing and Load Handling</li>
-                      <li>Deployment and Monitoring</li>
-                      <li>Maintenance and Scaling</li>
-                    </ul>
-                  </div>
+            <div className="service_details_content">
+              <div className="service_info">
+                <h6 className="subtitle">SERVICES</h6>
+                <h2 className="title">Market Place</h2>
+                <div className="desc">
+                  <p>
+                    Alongside client work, we build and sell our own digital
+                    products: tools and guides that solve one problem well and
+                    that you can start using straight away.
+                  </p>
                 </div>
               </div>
-              <div className="col-lg-5 col-xl-4">
-                <div className="tj_main_sidebar">
-                  <div className="sidebar_widget services_list">
-                    <div className="widget_title">
-                      <h3 className="title">All Services</h3>
-                    </div>
-                    <ul>
-                      <li className="active">
-                        <button>
-                          <i className="flaticon-design"></i> Node.js &amp;
-                          Express
-                        </button>
-                      </li>
-                      <li>
-                        <button>
-                          <i className="flaticon-3d-movie"></i> PHP &amp;
-                          Laravel
-                        </button>
-                      </li>
-                      <li>
-                        <button>
-                          <i className="flaticon-ux-design"></i> REST APIs
-                        </button>
-                      </li>
-                      <li>
-                        <button>
-                          <i className="flaticon-web-design"></i> MySQL &amp;
-                          MongoDB
-                        </button>
-                      </li>
-                      <li>
-                        <button>
-                          <i className="flaticon-ui-design"></i> Auth &amp;
-                          Security
-                        </button>
-                      </li>
+            </div>
+            <div className="row g-4">
+              <div className="col-md-6">
+                <article className="market-card">
+                  <a
+                    className="market-card-shot"
+                    href="https://mkstancreative.online/decaris/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    tabIndex={-1}
+                    aria-hidden="true"
+                  >
+                    <span className="market-card-bar">
+                      <i></i>
+                      <i></i>
+                      <i></i>
+                    </span>
+                    <img
+                      src="/assets/img/products/decaris.webp"
+                      alt="Decaris AI landing page: one long video in, a week of clips out"
+                      width="1200"
+                      height="750"
+                      loading="lazy"
+                    />
+                  </a>
+                  <div className="market-card-body">
+                    <span className="market-card-tag">AI Video Tool</span>
+                    <h3 className="market-card-title">Decaris AI</h3>
+                    <p>
+                      Turn one long video into a week of short clips. Paste a
+                      YouTube link or upload a podcast, interview or sermon,
+                      and Decaris AI finds the moments that stand on their
+                      own, reframes them vertical and adds word-by-word
+                      captions for TikTok, Reels and Shorts.
+                    </p>
+                    <ul className="market-card-meta">
+                      <li>1080×1920 vertical</li>
+                      <li>Word-by-word captions</li>
+                      <li>Titles &amp; hashtags</li>
                     </ul>
+                    <a
+                      className="btn tj-btn-primary"
+                      href="https://mkstancreative.online/decaris/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      View Decaris AI <i className="flaticon-up-right-arrow"></i>
+                    </a>
                   </div>
-                  <div className="sidebar_widget contact_form">
-                    <div className="widget_title">
-                      <h3 className="title">Get in Touch</h3>
-                    </div>
-                    <form action="index.html">
-                      <div className="form_group">
-                        <input type="text" name="name" placeholder="Name" />
-                      </div>
-                      <div className="form_group">
-                        <input type="email" name="semail" placeholder="Email" />
-                      </div>
-                      <div className="form_group">
-                        <textarea
-                          name="smessage"
-                          placeholder="Your message"
-                        ></textarea>
-                      </div>
-                      <div className="form_btn">
-                        <button className="btn tj-btn-primary" type="submit">
-                          Send Message
-                        </button>
-                      </div>
-                    </form>
+                </article>
+              </div>
+              <div className="col-md-6">
+                <article className="market-card">
+                  <a
+                    className="market-card-shot"
+                    href="https://mkstancreative.online/va-lead-blueprint/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    tabIndex={-1}
+                    aria-hidden="true"
+                  >
+                    <span className="market-card-bar">
+                      <i></i>
+                      <i></i>
+                      <i></i>
+                    </span>
+                    <img
+                      src="/assets/img/products/va-leads-blueprint.webp"
+                      alt="VA Leads Blueprint landing page: land your first $25–$50/hr VA client"
+                      width="1200"
+                      height="750"
+                      loading="lazy"
+                    />
+                  </a>
+                  <div className="market-card-body">
+                    <span className="market-card-tag">Ebook</span>
+                    <h3 className="market-card-title">VA Leads Blueprint</h3>
+                    <p>
+                      For virtual assistants chasing their first
+                      $25&ndash;$50/hr client. Build a list of 100&ndash;1,000
+                      verified eCommerce and SaaS decision-makers using only
+                      free tools, following an exact click-by-click process.
+                    </p>
+                    <ul className="market-card-meta">
+                      <li>₦10,000</li>
+                      <li>Instant PDF</li>
+                      <li>30-day money-back</li>
+                    </ul>
+                    <a
+                      className="btn tj-btn-primary"
+                      href="https://mkstancreative.online/va-lead-blueprint/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      View VA Leads Blueprint <i className="flaticon-up-right-arrow"></i>
+                    </a>
                   </div>
-                </div>
+                </article>
               </div>
             </div>
           </div>
